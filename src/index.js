@@ -4,20 +4,26 @@ import {
     BrowserRouter as Router,
     Route
 } from 'react-router-dom'
-import {createStore, applyMiddleware} from 'redux';
+import {createStore} from 'redux';
 import reducer from './reducer';
 import {Provider} from 'react-redux';
-import App from './App';
+import App from './components/App';
+import {NavigatorBarContainer as NavigatorBar} from './components/NavigatorBar';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-const store = createStoreWithMiddleware(reducer);
+const store = createStore(reducer);
+
+console.log(store);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router>
-            <Route exact path="/" component={App}/>
-        </Router>
+        <div>
+            <NavigatorBar />
+            <Router>
+                <Route exact path="/" component={App}/>
+            </Router>
+        </div>
     </Provider>,
-  document.getElementById('root')
+    document.getElementById('root')
 );
