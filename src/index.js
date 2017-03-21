@@ -9,6 +9,7 @@ import reducer from './reducer';
 import {Provider} from 'react-redux';
 import App from './components/App';
 import {NavigatorBarContainer as NavigatorBar} from './components/NavigatorBar';
+import Footer from './components/Footer';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -23,6 +24,7 @@ ReactDOM.render(
             <Router>
                 <Route exact path="/" component={App}/>
             </Router>
+            <Footer />
         </div>
     </Provider>,
     document.getElementById('root')
