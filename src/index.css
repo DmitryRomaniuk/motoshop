@@ -7,6 +7,7 @@ body {
 .header-logo__brand {
   width: 135px;
   margin-right: 25px;
+  margin-top: 15px;
   background: url(../public/icons/logo_motorcycles.svg) no-repeat 0 0;
   background-size: contain;
 }
@@ -28,7 +29,7 @@ body {
 #root nav .header-login__svg + span {
   margin-left: 10px;
   position: relative;
-  top: -9px;
+  top: -10px;
 }
 
 .navbar {

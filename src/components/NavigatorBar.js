@@ -7,7 +7,7 @@ export const NavigatorBar = ({isOpen, toggleNavBar}) => {
     return (
         <Navbar color="faded" light toggleable>
             <NavbarToggler right onClick={toggleNavBar}/>
-            <a className="header-logo__brand" rel="honda logo">Honda</a>
+                <NavLink href="/" className="header-logo__brand" rel="honda logo">Honda</NavLink>
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                     <NavItem>
