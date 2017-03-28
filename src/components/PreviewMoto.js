@@ -3,8 +3,9 @@ import Moto from './Moto';
 
 const PreviewMoto = ({listMoto}) => {
     return (
-        <div>
-            {listMoto.map((moto, index) => {return <Moto key={index}/>})}
+        <div className="preview-moto">
+            {listMoto.map((props, index) => {return <Moto key={index} name={props.name}
+                                                          srcImg={props.srcImg} price={props.price}/>})}
         </div>
     );
 };

@@ -11,7 +11,7 @@ export const NavigatorBar = ({isOpen, toggleNavBar}) => {
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                     <NavItem>
-                        <NavLink href="/sport/">Супер Спорт</NavLink>
+                        <NavLink href="/super-sport/">Супер Спорт</NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink href="/sport-touring/">Спорт Туризм</NavLink>
