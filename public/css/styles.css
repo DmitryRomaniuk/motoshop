@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "PFSbold";
+    src: url(../fonts/pfsquaresanspro-bold-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "PFSsemiBold";
+    src: url(../fonts/pfsquaresanspro-medium-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "PFSregular";
+    src: url(../fonts/pfsquaresanspro-regular-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "PFSExtraBlack";
+    src: url(../fonts/pfsquaresanspro-xblack-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "ProximaLight";
+    src: url(../fonts/ProximaNovaExCn-LightWeb.woff) format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "ProximaRegular";
+    src: url(../fonts/ProximaNovaExCn-RegWeb.woff) format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "ProximaSbold";
+    src: url(../fonts/ProximaNovaExCn-SboldWeb.woff) format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+.navbar-brand::before {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    content: ' ';
+    background-size: 141px 23px;
+    height: 23px;
+    width: 141px;
+    background-image: url("../icons/logo_motorcycles.svg")
+}

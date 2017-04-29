@@ -1,0 +1,158 @@
+{
+	"SUPER_SPORT_ROUTE": {
+		"name": "СУПЕР СПОРТ",
+		"motos": [{
+				"name": "CBR500RA",
+				"image": "CBR500R_archive.jpg"
+			},
+			{
+				"name": "CBR250RA",
+				"image": "CBR250R_icon_small_00.png"
+			},
+			{
+				"name": "CBR650F",
+				"image": "CBR650F_archive.png"
+			}
+		]
+	},
+	"SPORT_TOURING_ROUTE": {
+		"name": "СПОРТ ТУРИЗМ",
+		"motos": [{
+				"name": "VFR800A",
+				"image": "VFR_archive.jpg"
+			},
+			{
+				"name": "VFR800F",
+				"image": "VFR800F_archive.jpg"
+			}
+		]
+	},
+	"TOURING_ROUTE": {
+		"name": "ТУРИЗМ",
+		"motos": [{
+				"name": "ST1300A Pan-European",
+				"image": "ST1300_Pan_Euro.jpg"
+			},
+			{
+				"name": "DN-01",
+				"image": "dn-01-archive.jpg"
+			},
+			{
+				"name": "VT1300CX",
+				"image": "VT1300CX_archive.jpg"
+			},
+			{
+				"name": "Shadow Spirit VT750DC",
+				"image": "Shadow_Spirit_VT750DC_archive.jpg"
+			},
+			{
+				"name": "Shadow VT750C",
+				"image": "Shadow_VT750C_archive.jpg"
+			},
+			{
+				"name": "Shadow 750 Black Spirit",
+				"image": "Shadow_750_Black_Spirit_archive.jpg"
+			},
+			{
+				"name": "GL1800 (Air Bag + Navi)",
+				"image": "GL1800_archive.jpg"
+			},
+			{
+				"name": "CTX1300",
+				"image": "CTX1300_archive.jpg"
+			},
+			{
+				"name": "GL1800 F6C Valkyrie",
+				"image": "F6C_archive.jpg"
+			}
+		]
+	},
+	"STREET_ROUTE": {
+		"name": "НЕЙКИДЫ",
+		"motos": [{
+				"name": "CBF1000SA",
+				"image": "CBF1000A_archive.jpg"
+			},
+			{
+				"name": "CBF600SA",
+				"image": "CBF600SA_archive.jpg"
+			},
+			{
+				"name": "CB1000SA",
+				"image": "1000RA_archive.jpg"
+			},
+			{
+				"name": "CB600FA",
+				"image": "CB600FA_Hornet_archive.jpg"
+			},
+			{
+				"name": "CB650F",
+				"image": "650F_archive.jpg"
+			},
+			{
+				"name": "CB125",
+				"image": "cb125_archive.jpg"
+			}
+		]
+	},
+	"ADVENTURE_ROUTE": {
+		"name": "ЭНДУРО",
+		"motos": [{
+				"name": "XL1000VA Varadero",
+				"image": "XL1000VA_Varadero_archive.jpg"
+			},
+			{
+				"name": "XL700VA Transalp",
+				"image": "XL700VA-archive.jpg"
+			},
+			{
+				"name": "VFR800X Crossrunner",
+				"image": "VFR800X_Crossrunner_archive_00.jpg"
+			},
+			{
+				"name": "NC700X/D",
+				"image": "NC700X_archive.jpg"
+			},
+			{
+				"name": "NC750X (MT/DCT)",
+				"image": "NC750X_archive.jpg"
+			}
+		]
+	},
+	"OFF_ROAD_ROUTE": {
+		"name": "КРОССОВЫЕ",
+		"motos": [{
+				"name": "CRF150R/RB",
+				"image": "CRF250X_archive.jpg"
+			},
+			{
+				"name": "CRF50F",
+				"image": "CRF50F_archive.jpg"
+			}
+		]
+	},
+	"SCOOTER_ROUTE": {
+		"name": "СКУТЕРЫ",
+		"motos": [{
+				"name": "Silver Wing",
+				"image": "silver_wing_archive.jpg"
+			},
+			{
+				"name": "PCX150",
+				"image": "PCX150_archive.jpg"
+			}
+		]
+	},
+	"ATV_ROUTE": {
+		"name": "КВАДРОЦИКЛЫ",
+		"motos": [{
+				"name": "TRX700XX",
+				"image": "TRX700XX_archive.jpg"
+			},
+			{
+				"name": "TRX250X",
+				"image": "TRX250X_archive.jpg"
+			}
+		]
+	}
+}

@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended"
+  ],
+  "plugins": [
+    "flowtype",
+    "compat"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "settings": {
+    "polyfills": ["fetch"]
+  },
+  "rules": {
+    "semi": [2, "always"],
+    "no-unexpected-multiline": 2,
+    "compat/compat": 2,
+    "max-len": 0,
+    "prefer-template": 0,
+    "linebreak-style": ["error", "windows"]
+  }
+}
