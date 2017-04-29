@@ -20,7 +20,7 @@
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
     "fixlint": "npm run lint -- --fix",
     "test": "yarn lint && flow && jest --coverage",
-    "heroku-postbuild": "yarn prod:build",
+    "heroku-postbuild": "npm run prod:build",
     "precommit": "yarn test",
     "prepush": "yarn test && yarn prod:build"
   },
