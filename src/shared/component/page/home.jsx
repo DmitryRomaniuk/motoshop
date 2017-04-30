@@ -26,7 +26,7 @@ const styles = {
   },
   motoTypesOverview: {
     color: 'white',
-    backgroundColor: '#292b2c',
+    backgroundColor: '#121212',
     border: '1px solid transparent',
   },
   motoTypesEach: {
@@ -98,10 +98,10 @@ const HomePage = ({ classes }: { classes: Object }) =>
           <HomeTypeOverview type="street" moto={listMotoOverview.STREET} />
         </div>
         <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="super-touring" moto={listMotoOverview.CUSTOM} />
+          <HomeTypeOverview type="custom" moto={listMotoOverview.CUSTOM} />
         </div>
         <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="super-touring" moto={listMotoOverview.v125CC} />
+          <HomeTypeOverview type="125cc" moto={listMotoOverview.v125CC} />
         </div>
         <div className={classes.motoTypesEach}>
           <HomeTypeOverview type="off-road" moto={listMotoOverview.OFF_ROAD} />

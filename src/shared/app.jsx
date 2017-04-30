@@ -23,6 +23,8 @@ import {
   OFF_ROAD_ROUTE,
   SCOOTER_ROUTE,
   ATV_ROUTE,
+  CUSTOM_ROUTE,
+  V125CC_ROUTE,
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
 } from './routes';
@@ -42,6 +44,8 @@ const App = () =>
       <Route path={STREET_ROUTE} render={() => <TypeMotocycles route={STREET_ROUTE} motoList={motolist.STREET_ROUTE} />} />
       <Route path={OFF_ROAD_ROUTE} render={() => <TypeMotocycles route={OFF_ROAD_ROUTE} motoList={motolist.OFF_ROAD_ROUTE} />} />
       <Route path={SCOOTER_ROUTE} render={() => <TypeMotocycles route={SCOOTER_ROUTE} motoList={motolist.SCOOTER_ROUTE} />} />
+      <Route path={CUSTOM_ROUTE} render={() => <TypeMotocycles route={CUSTOM_ROUTE} motoList={motolist.CUSTOM_ROUTE} />} />
+      <Route path={V125CC_ROUTE} render={() => <TypeMotocycles route={V125CC_ROUTE} motoList={motolist.V125CC_ROUTE} />} />
       <Route path={ATV_ROUTE} render={() => <TypeMotocycles route={ATV_ROUTE} motoList={motolist.ATV_ROUTE} />} />
       <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
       <Route component={NotFoundPage} />

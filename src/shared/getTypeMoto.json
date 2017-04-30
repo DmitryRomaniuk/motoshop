@@ -154,5 +154,34 @@
 				"image": "TRX250X_archive.jpg"
 			}
 		]
+	},
+	"V125CC_ROUTE": {
+		"name": "125CC",
+		"motos": [
+			{
+				"name": "CB125",
+				"image": "cb125_archive.jpg"
+			},
+			{
+				"name": "CB125F",
+				"image": "cb125f_archive.png"
+			},
+			{
+				"name": "CBR125R",
+				"image": "cbr125r_archive.png"
+			},
+			{
+				"name": "MSX125",
+				"image": "msx125_archive.png"
+			}
+		]
+	},
+	"CUSTOM_ROUTE": {
+		"name": "КАСТОМ",
+		"motos": [{
+				"name": "NM4-VULTUS",
+				"image": "custom_archive.png"
+			}
+		]
 	}
 }

@@ -3,7 +3,6 @@
 import $ from 'jquery';
 import React from 'react';
 import injectSheet from 'react-jss';
-import classNames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 import {
   HOME_PAGE_ROUTE,
@@ -12,6 +11,8 @@ import {
   TOURING_ROUTE,
   ADVENTURE_ROUTE,
   STREET_ROUTE,
+  CUSTOM_ROUTE,
+  V125CC_ROUTE,
   OFF_ROAD_ROUTE,
   SCOOTER_ROUTE,
   ATV_ROUTE,
@@ -19,6 +20,7 @@ import {
 
 const styles = {
   navbar_brand_icon: {
+    composes: ['navbar-brand'],
     color: 'red',
   },
 };
@@ -33,7 +35,7 @@ const Nav = ({ classes }: { classes: Object }) =>
     <button className="navbar-toggler navbar-toggler-right" type="button" role="button" data-toggle="collapse" data-target=".js-navbar-collapse">
       <span className="navbar-toggler-icon" />
     </button>
-    <Link to={HOME_PAGE_ROUTE} className={classNames({ 'navbar-brand': true, [classes.navbar_brand_icon]: true })}>
+    <Link to={HOME_PAGE_ROUTE} className={classes.navbar_brand_icon}>
       &nbsp;
     </Link>
     <div className="js-navbar-collapse collapse navbar-collapse">
@@ -45,6 +47,8 @@ const Nav = ({ classes }: { classes: Object }) =>
           { route: TOURING_ROUTE, label: 'Touring' },
           { route: ADVENTURE_ROUTE, label: 'Adventure' },
           { route: STREET_ROUTE, label: 'Street' },
+          { route: CUSTOM_ROUTE, label: 'Custom' },
+          { route: V125CC_ROUTE, label: '125CC' },
           { route: OFF_ROAD_ROUTE, label: 'Off road' },
           { route: SCOOTER_ROUTE, label: 'Scooter' },
           { route: ATV_ROUTE, label: 'ATV' },
