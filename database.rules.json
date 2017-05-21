@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "public_resource": {
+      ".read": true,
+      ".write": true
+    },
+    "typesMoto": {
+      ".read": true,
+      ".write": false
+    }
+  }
+}
