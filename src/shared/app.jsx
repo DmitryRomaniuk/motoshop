@@ -8,6 +8,7 @@ import Helmet from 'react-helmet';
 import TypeMotocycles from './component/page/typeMotocycles';
 import HelloPage from './component/page/hello';
 import HelloAsyncPage from './component/page/hello-async';
+import LoginPage from './component/page/login';
 import HomePage from './component/page/home';
 import Footer from './component/footer';
 import Nav from './component/nav';
@@ -25,6 +26,7 @@ import {
   ATV_ROUTE,
   CUSTOM_ROUTE,
   V125CC_ROUTE,
+  LOGIN_ROUTE,
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
 } from './routes';
@@ -47,6 +49,7 @@ const App = () =>
       <Route path={CUSTOM_ROUTE} render={() => <TypeMotocycles route={CUSTOM_ROUTE} motoList={motolist.CUSTOM_ROUTE} />} />
       <Route path={V125CC_ROUTE} render={() => <TypeMotocycles route={V125CC_ROUTE} motoList={motolist.V125CC_ROUTE} />} />
       <Route path={ATV_ROUTE} render={() => <TypeMotocycles route={ATV_ROUTE} motoList={motolist.ATV_ROUTE} />} />
+      <Route path={LOGIN_ROUTE} render={() => <LoginPage />} />
       <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
       <Route component={NotFoundPage} />
     </Switch>

@@ -11,6 +11,7 @@ export const SCOOTER_ROUTE = '/scooter';
 export const ATV_ROUTE = '/atv';
 export const CUSTOM_ROUTE = '/custom';
 export const V125CC_ROUTE = '/125cc';
+export const LOGIN_ROUTE = '/login';
 export const HELLO_PAGE_ROUTE = '/hello';
 export const HELLO_ASYNC_PAGE_ROUTE = '/hello-async';
 export const NOT_FOUND_DEMO_PAGE_ROUTE = '/404';

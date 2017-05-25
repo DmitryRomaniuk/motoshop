@@ -15,6 +15,7 @@ import {
   V125CC_ROUTE,
   OFF_ROAD_ROUTE,
   SCOOTER_ROUTE,
+  LOGIN_ROUTE,
   ATV_ROUTE,
 } from '../routes';
 
@@ -22,6 +23,19 @@ const styles = {
   navbar_brand_icon: {
     composes: ['navbar-brand'],
     color: 'red',
+  },
+  navbar_nav: {
+    composes: ['navbar-nav', 'mr-auto'],
+    'justify-content': 'flex-start',
+    width: '100%',
+    'padding-right': '70px',
+  },
+  navItem: {
+    composes: ['nav-item'],
+    '&:last-child': {
+      position: 'absolute',
+      right: '1rem',
+    },
   },
 };
 
@@ -39,7 +53,7 @@ const Nav = ({ classes }: { classes: Object }) =>
       &nbsp;
     </Link>
     <div className="js-navbar-collapse collapse navbar-collapse">
-      <ul className="navbar-nav mr-auto">
+      <ul className={classes.navbar_nav}>
         {[
           { route: HOME_PAGE_ROUTE, label: 'Home' },
           { route: SUPER_SPORT_ROUTE, label: 'Super sport' },
@@ -52,8 +66,9 @@ const Nav = ({ classes }: { classes: Object }) =>
           { route: OFF_ROAD_ROUTE, label: 'Off road' },
           { route: SCOOTER_ROUTE, label: 'Scooter' },
           { route: ATV_ROUTE, label: 'ATV' },
+          { route: LOGIN_ROUTE, label: 'Login' },
         ].map(link => (
-          <li className="nav-item" key={link.route}>
+          <li className={classes.navItem} key={link.route}>
             <NavLink to={link.route} className="nav-link" activeStyle={{ color: 'white' }} exact onClick={handleNavLinkClick}>{link.label}</NavLink>
           </li>
         ))}
