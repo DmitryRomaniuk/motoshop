@@ -3,6 +3,7 @@
 import Immutable from 'immutable';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 import helloReducer from '../shared/reducer/hello';
 
@@ -15,7 +16,7 @@ const initStore = (plainPartialState: ?Object) => {
       .merge(Immutable.fromJS(plainPartialState.hello));
   }
 
-  return createStore(combineReducers({ hello: helloReducer }),
+  return createStore(combineReducers({ hello: helloReducer, form: reduxFormReducer }),
     preloadedState, applyMiddleware(thunkMiddleware));
 };
 

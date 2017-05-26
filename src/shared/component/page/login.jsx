@@ -2,13 +2,21 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
+import injectSheet from 'react-jss';
 
-import Message from '../../container/message';
-import HelloButton from '../../container/hello-button';
+import SimpleForm from '../SimpleForm';
+import showResults from '../../action/showResults';
+
+const styles = {
+  logo: {
+    'font-family': 'PFSExtraBlack',
+    'font-size': '2rem',
+  },
+};
 
 const title = 'Login Page';
 
-const HelloPage = () =>
+const HelloPage = ({ classes }: { classes: Object }) =>
   <div className="container mt-4">
     <Helmet
       title={title}
@@ -18,12 +26,12 @@ const HelloPage = () =>
       ]}
     />
     <div className="row">
-      <div className="col-12">
-        <h1>{title}</h1>
-        <Message />
-        <HelloButton />
+      <div className="offset-4 col-4">
+        <h1 className={classes.logo}>{title}</h1>
+        <div className="offset-5 g-signin2" data-onsuccess="onSignIn" id="my-signin2" />
+        <SimpleForm onSubmit={showResults} />
       </div>
     </div>
   </div>;
 
-export default HelloPage;
+export default injectSheet(styles)(HelloPage);
