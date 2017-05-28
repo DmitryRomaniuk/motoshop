@@ -28,7 +28,7 @@ const HelloPage = ({ classes }: { classes: Object }) =>
     <div className="row">
       <div className="offset-4 col-4">
         <h1 className={classes.logo}>{title}</h1>
-        <div className="offset-5 g-signin2" data-onsuccess="onSignIn" id="my-signin2" />
+        <div className="g-signin2" data-onsuccess="onSignIn" id="my-signin2" />
         <SimpleForm onSubmit={showResults} />
       </div>
     </div>

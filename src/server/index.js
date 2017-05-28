@@ -4,6 +4,8 @@ import compression from 'compression';
 import express from 'express';
 import { Server } from 'http';
 import socketIO from 'socket.io';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 import routing from './routing';
 import { WEB_PORT, STATIC_PATH } from '../shared/config';
@@ -17,6 +19,11 @@ const io = socketIO(http);
 setUpSocket(io);
 
 app.use(compression());
+
+app.use(cookieParser());
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.text({ type: 'text/html' }));
 app.use(STATIC_PATH, express.static('dist'));
 app.use(STATIC_PATH, express.static('public'));
 

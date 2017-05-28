@@ -1,8 +1,15 @@
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
 export default (async function showResults(values) {
-  await sleep(500); // simulate server latency
-  /* eslint-disable no-alert */
-  window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`);
-  /* eslint-enable no-alert */
+  const myHeaders = new Headers({ 'Content-Type': 'application/json' });
+
+  /* eslint-disable no-console */
+  console.log(values);
+  fetch('/login', {
+    method: 'POST',
+    body: JSON.stringify(values),
+    headers: myHeaders,
+    cache: 'default',
+  })
+  .then(res => res.json())
+  .then(res => console.log(res));
+  /* eslint-enable no-console */
 });

@@ -14,7 +14,7 @@ const styles = {
 };
 
 const SimpleForm = ({ handleSubmit, pristine, reset, submitting, classes }: { handleSubmit: Function,
-pristine: string, reset: Function, submitting: string, classes: Object }) => (
+pristine: boolean, reset: Function, submitting: boolean, classes: Object }) => (
   <form onSubmit={handleSubmit} className={classes.form}>
     <div className="form-group">
       <label htmlFor="loginName">Login Name</label>
