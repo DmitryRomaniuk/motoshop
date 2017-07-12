@@ -1,9 +1,9 @@
 # JavaScript Stack Boilerplate
 
-[![Build Status](https://img.shields.io/travis/verekia/js-stack-boilerplate.svg?style=flat-square)](https://travis-ci.org/verekia/js-stack-boilerplate)
-[![Coverage Status](https://img.shields.io/coveralls/verekia/js-stack-boilerplate.svg?style=flat-square)](https://coveralls.io/github/verekia/js-stack-boilerplate?branch=master)
-[![Dependencies](https://img.shields.io/david/verekia/js-stack-boilerplate.svg?style=flat-square)](https://david-dm.org/verekia/js-stack-boilerplate)
-[![Dev Dependencies](https://img.shields.io/david/dev/verekia/js-stack-boilerplate.svg?style=flat-square)](https://david-dm.org/verekia/js-stack-boilerplate?type=dev)
+[![Build Status](https://img.shields.io/travis/DmitryRomaniuk/motoshop.svg?style=flat-square)](https://travis-ci.org/DmitryRomaniuk/motoshop)
+[![Coverage Status](https://img.shields.io/coveralls/DmitryRomaniuk/motoshop.svg?style=flat-square)](https://coveralls.io/github/DmitryRomaniuk/motoshop?branch=master)
+[![Dependencies](https://img.shields.io/david/DmitryRomaniuk/motoshop.svg?style=flat-square)](https://david-dm.org/DmitryRomaniuk/motoshop)
+[![Dev Dependencies](https://img.shields.io/david/dev/DmitryRomaniuk/motoshop.svg?style=flat-square)](https://david-dm.org/DmitryRomaniuk/motoshop?type=dev)
 
 Final boilerplate code of the [JavaScript Stack from Scratch](https://github.com/verekia/js-stack-from-scratch) tutorial.
 
