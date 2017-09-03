@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import injectSheet from 'react-jss';
 import { Field, reduxForm } from 'redux-form';
