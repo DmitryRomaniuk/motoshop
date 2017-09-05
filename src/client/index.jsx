@@ -17,6 +17,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import App from '../shared/app';
 import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config';
 import helloReducer from '../shared/reducer/hello';
+import userReducer from '../shared/reducer/index';
 import { isProd } from '../shared/util';
 import setUpSocket from './socket';
 
@@ -30,8 +31,9 @@ const preloadedState = window.__PRELOADED_STATE__;
 /* eslint-enable no-underscore-dangle */
 
 const store = createStore(combineReducers(
-  { hello: helloReducer, form: reduxFormReducer }),
+  { hello: helloReducer, form: reduxFormReducer, user: userReducer }),
   { hello: Immutable.fromJS(preloadedState.hello) },
+  { user: Immutable.fromJS(preloadedState.user) },
   composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR);

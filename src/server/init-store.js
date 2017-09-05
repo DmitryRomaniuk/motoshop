@@ -1,23 +1,37 @@
 // @flow
 
 import Immutable from 'immutable';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import {
+    createStore,
+    combineReducers,
+    applyMiddleware,
+} from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import { reducer as reduxFormReducer } from 'redux-form';
+import {
+    reducer as reduxFormReducer,
+} from 'redux-form';
 
 import helloReducer from '../shared/reducer/hello';
+import userReducer from '../shared/reducer/index';
 
-const initStore = (plainPartialState: ?Object) => {
+const initStore = (plainPartialState: ? Object) => {
   const preloadedState = plainPartialState ? {} : undefined;
 
   if (plainPartialState && plainPartialState.hello) {
-    // flow-disable-next-line
+        // flow-disable-next-line
     preloadedState.hello = helloReducer(undefined, {})
-      .merge(Immutable.fromJS(plainPartialState.hello));
+            .merge(Immutable.fromJS(plainPartialState.hello));
+        // flow-disable-next-line
+    preloadedState.user = userReducer(undefined, {})
+            .merge(Immutable.fromJS(plainPartialState.user));
   }
 
-  return createStore(combineReducers({ hello: helloReducer, form: reduxFormReducer }),
-    preloadedState, applyMiddleware(thunkMiddleware));
+  return createStore(combineReducers({
+    hello: helloReducer,
+    form: reduxFormReducer,
+    user: userReducer,
+  }),
+        preloadedState, applyMiddleware(thunkMiddleware));
 };
 
 export default initStore;

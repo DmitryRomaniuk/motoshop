@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
 
 import initStore from './init-store';
-import App from './../shared/app';
+import App from '../shared/app';
 import { APP_CONTAINER_CLASS, JSS_SSR_CLASS, STATIC_PATH, WDS_PORT } from '../shared/config';
 import { isProd } from '../shared/util';
 
