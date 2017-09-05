@@ -12,7 +12,9 @@
         "yarn": "0.27.x"
     },
     "scripts": {
-        "start": "npm run dev:start & npm run dev:wds",
+        "start": "npm run start-win & npm run start-linux",
+        "start-win": "start npm run dev:start & npm run dev:wds",
+        "start-linux": "npm run dev:start",
         "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
         "dev:wds": "webpack-dev-server --progress",
         "prod:build": "rimraf lib dist && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
