@@ -17,7 +17,7 @@
         "start-linux": "npm run dev:start",
         "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
         "dev:wds": "webpack-dev-server --progress",
-        "prod:build": "babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
+        "prod:build": "./node_modules/.bin/rimraf lib dist && ./node_modules/.bin/babel src -d lib --ignore .test.js && ./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/webpack -p --progress",
         "prod:start": "heroku local",
         "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
         "fixlint": "npm run lint -- --fix",
