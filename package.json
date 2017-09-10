@@ -60,9 +60,7 @@
         "socket.io": "^1.7.3",
         "socket.io-client": "^1.7.3",
         "tether": "^1.4.0",
-        "yarn": "^1.0.1"
-    },
-    "devDependencies": {
+        "yarn": "^1.0.1",
         "babel-cli": "^6.23.0",
         "babel-core": "^6.23.1",
         "babel-eslint": "^7.1.1",
@@ -91,5 +89,7 @@
         "rimraf": "^2.6.1",
         "webpack": "^2.2.1",
         "webpack-dev-server": "^2.4.1"
+    },
+    "devDependencies": {
     }
 }
