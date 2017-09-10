@@ -71,3 +71,13 @@ export const homeList = () => new Promise((resolve, reject) => {
     reject(errorObject);
   });
 });
+
+export const homeRoutes = () => new Promise((resolve, reject) => {
+  admin.database().ref('typesMoto').on('value', (snapshot) => {
+    // console.log(snapshot.val());
+    resolve(snapshot.val());
+  }, (errorObject) => {
+    console.log('The read failed: ' + errorObject.code);
+    reject(errorObject);
+  });
+});

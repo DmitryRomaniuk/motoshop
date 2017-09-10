@@ -11,6 +11,7 @@ import {
   typesMotocycles,
   users,
   homeList,
+  homeRoutes,
 } from './db';
 
 import {
@@ -28,6 +29,7 @@ import {
   LOGIN_ROUTE,
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
+  HOME_PAGE_GET_ROUTES_LIST_ROUTE,
   helloEndpointRoute,
 } from '../shared/routes';
 
@@ -100,6 +102,10 @@ export default (app: Object) => {
 
   app.get('/home-list', (req, res) => {
     homeList().then(result => res.json(result));
+  });
+
+  app.get(HOME_PAGE_GET_ROUTES_LIST_ROUTE, (req, res) => {
+    homeRoutes().then(result => res.json(result));
   });
 
   app.get('/typesMoto', (req, res) => {

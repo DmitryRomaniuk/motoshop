@@ -1,9 +1,9 @@
-export default (async function showResults(values) {
+export default (values) => {
   const myHeaders = new Headers({ 'Content-Type': 'application/json' });
 
   /* eslint-disable no-console */
   // console.log(values);
-  fetch('/login', {
+  return fetch('/login', {
     method: 'POST',
     body: JSON.stringify(values),
     headers: myHeaders,
@@ -12,4 +12,4 @@ export default (async function showResults(values) {
   .then(res => res.json())
   .then(res => console.log(res));
   /* eslint-enable no-console */
-});
+};

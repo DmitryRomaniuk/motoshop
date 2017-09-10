@@ -138,12 +138,14 @@ class HomePage extends Component {
 
 
 HomePage.propTypes = {
-    // eslint-disable-next-line react/require-default-props
+  // eslint-disable-next-line react/require-default-props
   getList: PropTypes.func,
-  listMotoOverview: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    image: PropTypes.string,
-    description: PropTypes.string,
+  listMotoOverview: PropTypes.objectOf(PropTypes.shape({
+    STREET: PropTypes.objectOf(PropTypes.shape({
+      name: PropTypes.string,
+      image: PropTypes.string,
+      description: PropTypes.string,
+    })),
   })),
   classes: PropTypes.objectOf(PropTypes.shape({
     jumbotron: PropTypes.string,
@@ -155,13 +157,13 @@ HomePage.propTypes = {
 };
 
 HomePage.defaultProps = {
-  listMotoOverview: [
-    {
+  listMotoOverview: {
+    STREET: {
       name: '',
       image: '',
       description: '',
     },
-  ],
+  },
 };
 
 const mapStateToProps = state => ({
