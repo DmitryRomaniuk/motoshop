@@ -8,4 +8,3 @@ node_modules/
 
 # Heroku (remove if you're using the no-service boilerplate)
 /.env
-motoshop-firebase-access.json
