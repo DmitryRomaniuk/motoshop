@@ -8,8 +8,8 @@
         "> 1%"
     ],
     "engines": {
-        "node": "7.x",
-        "yarn": "0.27.x"
+        "node": "8.x",
+        "yarn": "1.0.0"
     },
     "scripts": {
         "start": "npm run start-win & npm run start-linux",
@@ -23,6 +23,7 @@
         "fixlint": "npm run lint -- --fix",
         "flow": "flow",
         "test": "yarn lint && flow && jest --coverage",
+        "heroku-prebuild": "npm install",
         "heroku-postbuild": "npm run prod:build",
         "precommit": "yarn test",
         "prepush": "yarn test && yarn prod:build"
