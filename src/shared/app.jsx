@@ -29,7 +29,6 @@ class App extends Component {
   static defaultProps: Object;
 
   componentDidMount() {
-    console.log(this.props.motolist);
     this.props.getListRoutes();
   }
 
@@ -77,10 +76,74 @@ App.propTypes = {
 App.defaultProps = {
   motolist: {
     SUPER_SPORT_ROUTE: {
-      name: 'СУПЕР СПОРТ',
+      name: '',
       motos: [{
-        name: 'CBR500RA',
-        image: 'CBR500R_archive.jpg',
+        name: '',
+        image: '',
+      },
+      ],
+    },
+    SPORT_TOURING_ROUTE: {
+      name: '',
+      motos: [{
+        name: '',
+        image: '',
+      },
+      ],
+    },
+    TOURING_ROUTE: {
+      name: '',
+      motos: [{
+        name: '',
+        image: '',
+      },
+      ],
+    },
+    ADVENTURE_ROUTE: {
+      name: '',
+      motos: [{
+        name: '',
+        image: '',
+      },
+      ],
+    },
+    OFF_ROAD_ROUTE: {
+      name: '',
+      motos: [{
+        name: '',
+        image: '',
+      },
+      ],
+    },
+    SCOOTER_ROUTE: {
+      name: '',
+      motos: [{
+        name: '',
+        image: '',
+      },
+      ],
+    },
+    ATV_ROUTE: {
+      name: '',
+      motos: [{
+        name: '',
+        image: '',
+      },
+      ],
+    },
+    CUSTOM_ROUTE: {
+      name: '',
+      motos: [{
+        name: '',
+        image: '',
+      },
+      ],
+    },
+    V125CC_ROUTE: {
+      name: '',
+      motos: [{
+        name: '',
+        image: '',
       },
       ],
     },
