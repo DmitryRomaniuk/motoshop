@@ -29,6 +29,7 @@ class App extends Component {
   static defaultProps: Object;
 
   componentDidMount() {
+    console.log(this.props.motolist);
     this.props.getListRoutes();
   }
 
@@ -38,9 +39,16 @@ class App extends Component {
       <Nav />
       <Switch>
         <Route exact path={routes.HOME_PAGE_ROUTE} component={HomePage} />
-        {Object.keys(this.props.motolist).map(routeMototype => (
-          <Route path={routes[routeMototype]} key={routeMototype} render={() => <TypeMotocycles route={routes[routeMototype]} motoList={this.props.motolist[routeMototype]} />} />
-        ))}
+        <Route path={routes.SUPER_SPORT_ROUTE} render={() => <TypeMotocycles route={routes.SUPER_SPORT_ROUTE} motoList={this.props.motolist.SUPER_SPORT_ROUTE} />} />
+        <Route path={routes.SPORT_TOURING_ROUTE} render={() => <TypeMotocycles route={routes.SPORT_TOURING_ROUTE} motoList={this.props.motolist.SPORT_TOURING_ROUTE} />} />
+        <Route path={routes.TOURING_ROUTE} render={() => <TypeMotocycles route={routes.TOURING_ROUTE} motoList={this.props.motolist.TOURING_ROUTE} />} />
+        <Route path={routes.ADVENTURE_ROUTE} render={() => <TypeMotocycles route={routes.ADVENTURE_ROUTE} motoList={this.props.motolist.ADVENTURE_ROUTE} />} />
+        <Route path={routes.STREET_ROUTE} render={() => <TypeMotocycles route={routes.STREET_ROUTE} motoList={this.props.motolist.STREET_ROUTE} />} />
+        <Route path={routes.OFF_ROAD_ROUTE} render={() => <TypeMotocycles route={routes.OFF_ROAD_ROUTE} motoList={this.props.motolist.OFF_ROAD_ROUTE} />} />
+        <Route path={routes.SCOOTER_ROUTE} render={() => <TypeMotocycles route={routes.SCOOTER_ROUTE} motoList={this.props.motolist.SCOOTER_ROUTE} />} />
+        <Route path={routes.CUSTOM_ROUTE} render={() => <TypeMotocycles route={routes.CUSTOM_ROUTE} motoList={this.props.motolist.CUSTOM_ROUTE} />} />
+        <Route path={routes.V125CC_ROUTE} render={() => <TypeMotocycles route={routes.V125CC_ROUTE} motoList={this.props.motolist.V125CC_ROUTE} />} />
+        <Route path={routes.ATV_ROUTE} render={() => <TypeMotocycles route={routes.ATV_ROUTE} motoList={this.props.motolist.ATV_ROUTE} />} />
         <Route path={routes.LOGIN_ROUTE} component={Login} />
         <Route path={routes.PROTECTED_ROUTE} component={Protected} />
         <Route path={routes.ADMIN_ROUTE} component={Admin} />
