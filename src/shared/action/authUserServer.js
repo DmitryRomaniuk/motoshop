@@ -2,7 +2,7 @@ export default (async function showResults(values) {
   const myHeaders = new Headers({ 'Content-Type': 'application/json' });
 
   /* eslint-disable no-console */
-  console.log(values);
+  // console.log(values);
   fetch('/login', {
     method: 'POST',
     body: JSON.stringify(values),

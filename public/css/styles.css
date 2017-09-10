@@ -57,3 +57,11 @@
     width: 141px;
     background-image: url("../icons/logo_motorcycles.svg")
 }
+
+.brand-text {
+    color: #e10025;
+}
+
+.text-center {
+    text-align: center;
+}

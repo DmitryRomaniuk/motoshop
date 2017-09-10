@@ -9,21 +9,15 @@ import Loading from './component/Loading';
 const locationHelper = locationHelperBuilder({});
 
 const userIsAuthenticatedDefaults = {
-  authenticatedSelector: state => state.user.data !== null,
-  authenticatingSelector: state => state.user.isLoading,
+  authenticatedSelector: state => state.user.get('data') !== null,
+  authenticatingSelector: state => state.user.get('isLoading'),
   wrapperDisplayName: 'UserIsAuthenticated',
 };
 
-export const userIsAuthenticated = connectedAuthWrapper({
-  authenticatedSelector: state => state.user.data !== null,
-  authenticatingSelector: state => state.user.isLoading,
-  wrapperDisplayName: 'UserIsAuthenticated',
-});
+export const userIsAuthenticated = connectedAuthWrapper(userIsAuthenticatedDefaults);
 
 export const userIsAuthenticatedRedir = connectedRouterRedirect({
-  authenticatedSelector: state => state.user.data !== null,
-  authenticatingSelector: state => state.user.isLoading,
-  wrapperDisplayName: 'UserIsAuthenticated',
+  ...userIsAuthenticatedDefaults,
   AuthenticatingComponent: Loading,
   redirectPath: '/login',
 });
@@ -31,26 +25,20 @@ export const userIsAuthenticatedRedir = connectedRouterRedirect({
 export const userIsAdminRedir = connectedRouterRedirect({
   redirectPath: '/',
   allowRedirectBack: false,
-  authenticatedSelector: state => state.user.data !== null && state.user.data.isAdmin,
+  authenticatedSelector: state => state.user.get('data') !== null && state.user.get('data').get('isAdmin'),
   predicate: user => user.isAdmin,
   wrapperDisplayName: 'UserIsAdmin',
 });
 
 const userIsNotAuthenticatedDefaults = {
-    // Want to redirect the user when they are done loading and authenticated
-  authenticatedSelector: state => state.user.data === null && state.user.isLoading === false,
+  authenticatedSelector: state => state.user.get('data') === null && state.user.get('isLoading') === false,
   wrapperDisplayName: 'UserIsNotAuthenticated',
 };
 
-export const userIsNotAuthenticated = connectedAuthWrapper({
-    // Want to redirect the user when they are done loading and authenticated
-  authenticatedSelector: state => state.user.data === null && state.user.isLoading === false,
-  wrapperDisplayName: 'UserIsNotAuthenticated',
-});
+export const userIsNotAuthenticated = connectedAuthWrapper(userIsNotAuthenticatedDefaults);
 
 export const userIsNotAuthenticatedRedir = connectedRouterRedirect({
   redirectPath: (state, ownProps) => locationHelper.getRedirectQueryParam(ownProps) || '/protected',
   allowRedirectBack: false,
-  authenticatedSelector: state => state.user.data === null && state.user.isLoading === false,
-  wrapperDisplayName: 'UserIsNotAuthenticated',
+  ...userIsNotAuthenticatedDefaults,
 });

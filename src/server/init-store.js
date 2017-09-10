@@ -12,7 +12,7 @@ import {
 } from 'redux-form';
 
 import helloReducer from '../shared/reducer/hello';
-import userReducer from '../shared/reducer/index';
+import userReducer from '../shared/reducer/user';
 
 const initStore = (plainPartialState: ? Object) => {
   const preloadedState = plainPartialState ? {} : undefined;

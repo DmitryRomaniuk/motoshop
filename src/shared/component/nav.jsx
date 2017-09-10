@@ -4,6 +4,7 @@ import $ from 'jquery';
 import React from 'react';
 import injectSheet from 'react-jss';
 import { Link, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   HOME_PAGE_ROUTE,
   SUPER_SPORT_ROUTE,
@@ -17,7 +18,36 @@ import {
   SCOOTER_ROUTE,
   LOGIN_ROUTE,
   ATV_ROUTE,
+  PROTECTED_ROUTE,
+  ADMIN_ROUTE,
 } from '../routes';
+import { logout } from '../action/user';
+import { userIsAuthenticated, userIsNotAuthenticated } from '../auth';
+
+const getUserName = (user) => {
+  if (user.data) return `Welcome ${user.data.name}!`;
+  return 'Hello guest!';
+};
+const handleNavLinkClick = () => {
+  $('body').scrollTop(0);
+  $('.js-navbar-collapse').collapse('hide');
+};
+
+const UserName = ({ user, classComponent }: {user: Object, classComponent: string}) => (<div className={classComponent + ' nav-link brand-text'} >{getUserName(user)}</div>);
+const LoginLink = userIsNotAuthenticated(() => <NavLink className="nav-link" to={LOGIN_ROUTE}>Login</NavLink>);
+const LogoutLink = userIsAuthenticated(({ logoutUser }: { logoutUser: Function }) => <a href="/" className="nav-link" onClick={logoutUser}>Logout</a>);
+const ProtectedLink = userIsAuthenticated(({ classComponent }: { classComponent: string }) => (
+  <li className={classComponent}>
+    <NavLink to={PROTECTED_ROUTE} className="nav-link" onClick={handleNavLinkClick}>My cabinet</NavLink>
+  </li>),
+);
+const AdminLink = userIsAuthenticated(({ user, classComponent }: {user: Object, classComponent: string}) => {
+  const adminLink = (user.data.isAdmin) ? (<li className={classComponent}>
+    <NavLink to={ADMIN_ROUTE} className="nav-link" onClick={handleNavLinkClick}>Admin cabinet</NavLink>
+  </li>) : null;
+  return adminLink;
+});
+
 
 const styles = {
   navbar_brand_icon: {
@@ -39,12 +69,8 @@ const styles = {
   },
 };
 
-const handleNavLinkClick = () => {
-  $('body').scrollTop(0);
-  $('.js-navbar-collapse').collapse('hide');
-};
 
-const Nav = ({ classes }: { classes: Object }) =>
+const Nav = ({ classes, logoutUser, user }: { classes: Object, logoutUser: Function, user: Object }) =>
   <nav className="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
     <button className="navbar-toggler navbar-toggler-right" type="button" role="button" data-toggle="collapse" data-target=".js-navbar-collapse">
       <span className="navbar-toggler-icon" />
@@ -66,14 +92,28 @@ const Nav = ({ classes }: { classes: Object }) =>
           { route: OFF_ROAD_ROUTE, label: 'Off road' },
           { route: SCOOTER_ROUTE, label: 'Scooter' },
           { route: ATV_ROUTE, label: 'ATV' },
-          { route: LOGIN_ROUTE, label: 'Login' },
         ].map(link => (
           <li className={classes.navItem} key={link.route}>
             <NavLink to={link.route} className="nav-link" activeStyle={{ color: 'white' }} exact onClick={handleNavLinkClick}>{link.label}</NavLink>
           </li>
         ))}
+        <UserName user={user} classComponent={classes.navItem} />
+        <ProtectedLink user={user} classComponent={classes.navItem} />
+        <AdminLink user={user} classComponent={classes.navItem} />
+        <li className={classes.navItem}>
+          <LoginLink />
+          <LogoutLink logoutUser={logoutUser} />
+        </li>
       </ul>
     </div>
   </nav>;
 
-export default injectSheet(styles)(Nav);
+const mapStateToProps = state => ({
+  user: state.user.toJS(),
+});
+
+const mapDispatchToProps = {
+  logoutUser: logout,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(Nav));

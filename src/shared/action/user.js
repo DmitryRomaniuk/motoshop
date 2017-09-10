@@ -1,20 +1,20 @@
-import * as constants from '../constants';
+// @flow
 
-export const login = data => (dispatch) => {
-  dispatch({
-    type: constants.USER_LOGGING_IN,
-  });
-        // Wait 2 seconds before "logging in"
-  setTimeout(() => {
-    dispatch({
-      type: constants.USER_LOGGED_IN,
-      payload: data,
-    });
-  }, 2000);
+import { createAction } from 'redux-actions';
+
+export const USER_LOGGING_IN = 'USER_LOGGING_IN';
+export const USER_LOGGED_IN = 'USER_LOGGED_IN';
+export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
+
+export const userLoggingIn = createAction(USER_LOGGING_IN);
+export const userLoggedIn = createAction(USER_LOGGED_IN);
+export const userLoggedOut = createAction(USER_LOGGED_OUT);
+
+export const login = (data: {data: any}) => (dispatch: Function) => {
+  dispatch(userLoggingIn());
+  return setTimeout(() => {
+    dispatch(userLoggedIn(data));
+  }, 1);
 };
 
-export function logout() {
-  return {
-    type: constants.USER_LOGGED_OUT,
-  };
-}
+export const logout = () => (dispatch: Function) => dispatch(userLoggedOut());
