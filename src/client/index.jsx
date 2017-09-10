@@ -18,6 +18,7 @@ import App from '../shared/app';
 import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config';
 import helloReducer from '../shared/reducer/hello';
 import userReducer from '../shared/reducer/user';
+import listHome from '../shared/reducer/homePage';
 import { isProd } from '../shared/util';
 import setUpSocket from './socket';
 
@@ -31,10 +32,16 @@ const preloadedState = window.__PRELOADED_STATE__;
 /* eslint-enable no-underscore-dangle */
 
 const store = createStore(combineReducers(
-  { hello: helloReducer, form: reduxFormReducer, user: userReducer }),
+  {
+    hello: helloReducer,
+    form: reduxFormReducer,
+    user: userReducer,
+    listHome,
+  }),
   {
     hello: Immutable.fromJS(preloadedState.hello),
     user: Immutable.fromJS(preloadedState.user),
+    listHome: Immutable.fromJS(preloadedState.listHome),
   },
   composeEnhancers(applyMiddleware(thunkMiddleware)));
 

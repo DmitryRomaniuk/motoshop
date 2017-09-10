@@ -1,13 +1,15 @@
 // @flow
 
-import React from 'react';
+// import React from 'react';
 import Helmet from 'react-helmet';
 import injectSheet from 'react-jss';
-
-import ModalExample from '../modal-example';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getList } from '../../action/homePage';
 import HomeTypeOverview from '../home-type-overview';
 import { APP_NAME } from '../../config';
-import listMotoOverview from '../../homeOverviewMotoTypes.json';
+// import listMotoOverview from '../../homeOverviewMotoTypes.json';
 
 const styles = {
   hoverMe: {
@@ -58,60 +60,112 @@ const styles = {
   },
 };
 
-const HomePage = ({ classes }: { classes: Object }) =>
-  <div>
-    <Helmet
-      meta={[
-        { name: 'description', content: 'Hello App is an app to say hello' },
-        { property: 'og:title', content: APP_NAME },
-      ]}
-    />
-    <div className={classes.jumbotron}>
-      <div className="container">
-        <div className="row">
-          <div className={classes['jumbotron-text']}>&mdash;&nbsp;RANGE&nbsp;&mdash;</div>
-        </div>
-        <div className="row">
-          <div className={classes['jumbotron-text-banner']}>RIDE YOUR DREAM</div>
-        </div>
-        <div className="row">
-          <div className={classes['jumbotron-text']}><span>In 1947 Soichiro Honda found a dream could be real. Where will you find yours?</span>
+// const HomePage = ({ classes }: { classes: Object }) =>
+//   <div>
+//     <Helmet
+//       meta={[
+//         { name: 'description', content: 'Hello App is an app to say hello' },
+//         { property: 'og:title', content: APP_NAME },
+//       ]}
+//     />
+//     <div className={classes.jumbotron}>
+//       <div className="container">
+//         <div className="row">
+//           <div className={classes['jumbotron-text']}>&mdash;&nbsp;RANGE&nbsp;&mdash;</div>
+//         </div>
+//         <div className="row">
+//           <div className={classes['jumbotron-text-banner']}>RIDE YOUR DREAM</div>
+//         </div>
+//         <div className="row">
+//           <div className={classes['jumbotron-text']}><span>In 1947 Soichiro Honda found a dream could be real. Where will you find yours?</span>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//     <div className={classes.motoTypesOverview}>
+//       <div className="container">
+//         {listMotoOverview.map(( elem ) => (
+//           <div className={classes.motoTypesEach} key={Object.keys(elem)[0]}>
+//             <HomeTypeOverview type={Object.keys(elem)[0]} moto={Object.values(elem)[0]} />
+//           </div>))}
+//       </div>
+//     </div>
+//     <ModalExample />
+//   </div>;
+
+// export default injectSheet(styles)(HomePage);
+
+class HomePage extends Component {
+  static defaultProps: Object;
+
+  componentDidMount() {
+    this.props.getList();
+  }
+
+  render() {
+    return (<div>
+      <Helmet
+        meta={[
+                      { name: 'description', content: 'Hello App is an app to say hello' },
+                      { property: 'og:title', content: APP_NAME },
+        ]}
+      />
+      <div className={this.props.classes.jumbotron}>
+        <div className="container">
+          <div className="row">
+            <div className={this.props.classes['jumbotron-text']}>&mdash;&nbsp;RANGE&nbsp;&mdash;</div>
+          </div>
+          <div className="row">
+            <div className={this.props.classes['jumbotron-text-banner']}>RIDE YOUR DREAM</div>
+          </div>
+          <div className="row">
+            <div className={this.props.classes['jumbotron-text']}><span>In 1947 Soichiro Honda found a dream could be real. Where will you find yours?</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div className={classes.motoTypesOverview}>
-      <div className="container">
-        <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="super-sport" moto={listMotoOverview.SUPER_SPORT} />
-        </div>
-        <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="sport-touring" moto={listMotoOverview.SPORT_TOURING} />
-        </div>
-        <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="touring" moto={listMotoOverview.TOURING} />
-        </div>
-        <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="adventure" moto={listMotoOverview.ADVENTURE} />
-        </div>
-        <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="street" moto={listMotoOverview.STREET} />
-        </div>
-        <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="custom" moto={listMotoOverview.CUSTOM} />
-        </div>
-        <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="125cc" moto={listMotoOverview.v125CC} />
-        </div>
-        <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="off-road" moto={listMotoOverview.OFF_ROAD} />
-        </div>
-        <div className={classes.motoTypesEach}>
-          <HomeTypeOverview type="scooter" moto={listMotoOverview.SCOOTER} />
+      <div className={this.props.classes.motoTypesOverview}>
+        <div className="container">
+          {Object.keys(this.props.listMotoOverview).map(elem => (
+            <div className={this.props.classes.motoTypesEach} key={elem}>
+              <HomeTypeOverview type={elem.toLowerCase()} moto={this.props.listMotoOverview[elem]} />
+            </div>))}
         </div>
       </div>
-    </div>
-    <ModalExample />
-  </div>;
+    </div>);
+  }
+}
 
-export default injectSheet(styles)(HomePage);
+
+HomePage.propTypes = {
+    // eslint-disable-next-line react/require-default-props
+  getList: PropTypes.func,
+  listMotoOverview: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    image: PropTypes.string,
+    description: PropTypes.string,
+  })),
+  classes: PropTypes.objectOf(PropTypes.shape({
+    jumbotron: PropTypes.string,
+    'jumbotron-text': PropTypes.string,
+    'jumbotron-text-banner': PropTypes.string,
+    motoTypesOverview: PropTypes.string,
+    motoTypesEach: PropTypes.string,
+  })),
+};
+
+HomePage.defaultProps = {
+  listMotoOverview: [
+    {
+      name: '',
+      image: '',
+      description: '',
+    },
+  ],
+};
+
+const mapStateToProps = state => ({
+  listMotoOverview: state.listHome.get('listMoto').toJS(),
+});
+
+export default connect(mapStateToProps, { getList })(injectSheet(styles)(HomePage));

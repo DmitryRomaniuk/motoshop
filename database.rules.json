@@ -1,5 +1,13 @@
 {
   "rules": {
+    "users": {
+      ".read": "auth.uid === 'Xep3lILIfkMuaVoUwDAD4PjYSYl1'",
+      ".write": "auth.uid === 'Xep3lILIfkMuaVoUwDAD4PjYSYl1'",
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid || auth != null && auth.uid === 'Xep3lILIfkMuaVoUwDAD4PjYSYl1'",
+        ".write": "$uid === auth.uid || $uid === 'Xep3lILIfkMuaVoUwDAD4PjYSYl1'"
+      }
+    },
     "public_resource": {
       ".read": true,
       ".write": true

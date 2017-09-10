@@ -29,18 +29,20 @@
     },
     "dependencies": {
         "babel-polyfill": "^6.23.0",
-        "body-parser": "^1.17.2",
+        "body-parser": "^1.18.0",
         "bootstrap": "4.0.0-alpha.6",
         "classnames": "^2.2.5",
         "compression": "^1.6.2",
         "cookie-parser": "^1.4.3",
         "dotenv": "^4.0.0",
         "express": "^4.15.0",
-        "firebase-admin": "^5.0.0",
+        "firebase-admin": "^5.2.0",
+        "google-auth-library": "^0.11.0",
         "immutable": "^4.0.0-rc.1",
         "isomorphic-fetch": "^2.2.1",
         "jquery": "^3.1.1",
         "mongoose": "^4.9.5",
+        "prop-types": "^15.5.10",
         "react": "^15.4.2",
         "react-dom": "^15.4.2",
         "react-helmet": "^4.0.0",
@@ -57,7 +59,7 @@
         "socket.io": "^1.7.3",
         "socket.io-client": "^1.7.3",
         "tether": "^1.4.0",
-        "yarn": "^1.0.0"
+        "yarn": "^1.0.1"
     },
     "devDependencies": {
         "babel-cli": "^6.23.0",

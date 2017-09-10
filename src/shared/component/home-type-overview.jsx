@@ -40,7 +40,7 @@ const styles = {
 };
 
 const HomeTypeOverview = ({ type, moto, classes }: {type: string, moto: Object, classes: Object}) =>
-  <div className="container mt-4">
+  (<div className="container mt-4">
     <div className="row">
       <div className={classes.title}>
         {moto.name}
@@ -63,6 +63,6 @@ const HomeTypeOverview = ({ type, moto, classes }: {type: string, moto: Object, 
         </div>
       </div>
     </div>
-  </div>;
+  </div>);
 
 export default injectSheet(styles)(HomeTypeOverview);

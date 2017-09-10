@@ -8,6 +8,12 @@ import {
 } from './controller';
 
 import {
+  typesMotocycles,
+  users,
+  homeList,
+} from './db';
+
+import {
   HOME_PAGE_ROUTE,
   SUPER_SPORT_ROUTE,
   SPORT_TOURING_ROUTE,
@@ -90,6 +96,18 @@ export default (app: Object) => {
 
   app.get(helloEndpointRoute(), (req, res) => {
     res.json(helloEndpoint(req.params.num));
+  });
+
+  app.get('/home-list', (req, res) => {
+    homeList().then(result => res.json(result));
+  });
+
+  app.get('/typesMoto', (req, res) => {
+    typesMotocycles().then(result => res.json(result));
+  });
+
+  app.get('/users', (req, res) => {
+    users().then(result => res.json(result));
   });
 
   app.get('/500', () => {
