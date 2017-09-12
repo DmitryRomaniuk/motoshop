@@ -8,7 +8,7 @@ import validate from './validate';
 import warn from './warn';
 import submit from './submit';
 import renderFieldInput from './renderFieldInput';
-import { login } from '../action/user';
+import { login } from '../../action/user';
 
 const styles = {
   form: {

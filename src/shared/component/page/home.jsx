@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import { getList } from '../../action/homePage';
 import HomeTypeOverview from '../home-type-overview';
 import { APP_NAME } from '../../config';
-// import listMotoOverview from '../../homeOverviewMotoTypes.json';
 
 const styles = {
   hoverMe: {
@@ -60,41 +59,6 @@ const styles = {
   },
 };
 
-// const HomePage = ({ classes }: { classes: Object }) =>
-//   <div>
-//     <Helmet
-//       meta={[
-//         { name: 'description', content: 'Hello App is an app to say hello' },
-//         { property: 'og:title', content: APP_NAME },
-//       ]}
-//     />
-//     <div className={classes.jumbotron}>
-//       <div className="container">
-//         <div className="row">
-//           <div className={classes['jumbotron-text']}>&mdash;&nbsp;RANGE&nbsp;&mdash;</div>
-//         </div>
-//         <div className="row">
-//           <div className={classes['jumbotron-text-banner']}>RIDE YOUR DREAM</div>
-//         </div>
-//         <div className="row">
-//           <div className={classes['jumbotron-text']}><span>In 1947 Soichiro Honda found a dream could be real. Where will you find yours?</span>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//     <div className={classes.motoTypesOverview}>
-//       <div className="container">
-//         {listMotoOverview.map(( elem ) => (
-//           <div className={classes.motoTypesEach} key={Object.keys(elem)[0]}>
-//             <HomeTypeOverview type={Object.keys(elem)[0]} moto={Object.values(elem)[0]} />
-//           </div>))}
-//       </div>
-//     </div>
-//     <ModalExample />
-//   </div>;
-
-// export default injectSheet(styles)(HomePage);
-
 class HomePage extends Component {
   static defaultProps: Object;
 
@@ -141,7 +105,7 @@ HomePage.propTypes = {
   // eslint-disable-next-line react/require-default-props
   getList: PropTypes.func,
   listMotoOverview: PropTypes.objectOf(PropTypes.shape({
-    STREET: PropTypes.objectOf(PropTypes.shape({
+    random: PropTypes.objectOf(PropTypes.shape({
       name: PropTypes.string,
       image: PropTypes.string,
       description: PropTypes.string,
@@ -158,7 +122,7 @@ HomePage.propTypes = {
 
 HomePage.defaultProps = {
   listMotoOverview: {
-    STREET: {
+    random: {
       name: '',
       image: '',
       description: '',

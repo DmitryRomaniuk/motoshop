@@ -16,11 +16,9 @@ import { reducer as reduxFormReducer } from 'redux-form';
 
 import App from '../shared/app';
 import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config';
-import helloReducer from '../shared/reducer/hello';
 import userReducer from '../shared/reducer/user';
 import listHome from '../shared/reducer/homePage';
 import { isProd } from '../shared/util';
-import setUpSocket from './socket';
 
 window.jQuery = $;
 window.Tether = Tether;
@@ -33,13 +31,11 @@ const preloadedState = window.__PRELOADED_STATE__;
 
 const store = createStore(combineReducers(
   {
-    hello: helloReducer,
     form: reduxFormReducer,
     user: userReducer,
     listHome,
   }),
   {
-    hello: Immutable.fromJS(preloadedState.hello),
     user: Immutable.fromJS(preloadedState.user),
     listHome: Immutable.fromJS(preloadedState.listHome),
   },
@@ -70,5 +66,3 @@ if (module.hot) {
 const jssServerSide = document.querySelector(JSS_SSR_SELECTOR);
 // flow-disable-next-line
 jssServerSide.parentNode.removeChild(jssServerSide);
-
-setUpSocket(store);

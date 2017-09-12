@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
 
-import SimpleForm from '../SimpleForm';
+import SimpleForm from '../form/SimpleForm';
 import authUserServer from '../../action/authUserServer';
 
 const styles = {

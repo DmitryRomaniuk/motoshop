@@ -11,7 +11,6 @@ import {
     reducer as reduxFormReducer,
 } from 'redux-form';
 
-import helloReducer from '../shared/reducer/hello';
 import userReducer from '../shared/reducer/user';
 import listHome from '../shared/reducer/homePage';
 
@@ -20,10 +19,7 @@ const initStore = (plainPartialState: ? Object) => {
 
   if (plainPartialState && plainPartialState.hello) {
         // flow-disable-next-line
-    preloadedState.hello = helloReducer(undefined, {})
-            .merge(Immutable.fromJS(plainPartialState.hello));
-        // flow-disable-next-line
-    preloadedState.listHome = helloReducer(undefined, {})
+    preloadedState.listHome = listHome(undefined, {})
             .merge(Immutable.fromJS(plainPartialState.listHome));
         // flow-disable-next-line
     preloadedState.user = userReducer(undefined, {})
@@ -31,7 +27,6 @@ const initStore = (plainPartialState: ? Object) => {
   }
 
   return createStore(combineReducers({
-    hello: helloReducer,
     form: reduxFormReducer,
     user: userReducer,
     listHome,

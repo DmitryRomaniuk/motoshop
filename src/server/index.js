@@ -3,21 +3,17 @@
 import compression from 'compression';
 import express from 'express';
 import { Server } from 'http';
-import socketIO from 'socket.io';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
 import routing from './routing';
 import { WEB_PORT, STATIC_PATH } from '../shared/config';
 import { isProd } from '../shared/util';
-import setUpSocket from './socket';
 import './db';
 
 const app = express();
 // flow-disable-next-line
 const http = Server(app);
-const io = socketIO(http);
-setUpSocket(io);
 
 app.use(compression());
 

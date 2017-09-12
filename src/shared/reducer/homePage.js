@@ -45,6 +45,14 @@ const initialState = Immutable.fromJS({
       },
       ],
     },
+    STREET_ROUTE: {
+      name: '',
+      motos: [{
+        name: '',
+        image: '',
+      },
+      ],
+    },
     ADVENTURE_ROUTE: {
       name: '',
       motos: [{
