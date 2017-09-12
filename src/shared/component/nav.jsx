@@ -2,6 +2,7 @@
 
 import $ from 'jquery';
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
 import {
@@ -33,16 +34,16 @@ const handleNavLinkClick = () => {
 };
 
 const UserName = ({ user, classComponent }: {user: Object, classComponent: string}) => (<div className={classComponent + ' nav-link brand-text'} >{getUserName(user)}</div>);
-const LoginLink = userIsNotAuthenticated(() => <a className="nav-link" href={LOGIN_ROUTE}>Login</a>);
-const LogoutLink = userIsAuthenticated(({ logoutUser }: { logoutUser: Function }) => <a href="/" className="nav-link" onClick={logoutUser}>Logout</a>);
+const LoginLink = userIsNotAuthenticated(() => <NavLink className="nav-link" to={LOGIN_ROUTE}>Login</NavLink>);
+const LogoutLink = userIsAuthenticated(({ logoutUser }: { logoutUser: Function }) => <NavLink to="/" className="nav-link" onClick={logoutUser}>Logout</NavLink>);
 const ProtectedLink = userIsAuthenticated(({ classComponent }: { classComponent: string }) => (
   <li className={classComponent}>
-    <a href={PROTECTED_ROUTE} className="nav-link" onClick={handleNavLinkClick}>My cabinet</a>
+    <NavLink to={PROTECTED_ROUTE} className="nav-link" onClick={handleNavLinkClick}>My cabinet</NavLink>
   </li>),
 );
 const AdminLink = userIsAuthenticated(({ user, classComponent }: {user: Object, classComponent: string}) => {
   const adminLink = (user.data.isAdmin) ? (<li className={classComponent}>
-    <a href={ADMIN_ROUTE} className="nav-link" onClick={handleNavLinkClick}>Admin cabinet</a>
+    <NavLink to={ADMIN_ROUTE} className="nav-link" onClick={handleNavLinkClick}>Admin cabinet</NavLink>
   </li>) : null;
   return adminLink;
 });
@@ -74,9 +75,9 @@ const Nav = ({ classes, logoutUser, user }: { classes: Object, logoutUser: Funct
     <button className="navbar-toggler navbar-toggler-right" type="button" role="button" data-toggle="collapse" data-target=".js-navbar-collapse">
       <span className="navbar-toggler-icon" />
     </button>
-    <a href={HOME_PAGE_ROUTE} className={classes.navbar_brand_icon}>
+    <Link to={HOME_PAGE_ROUTE} className={classes.navbar_brand_icon}>
       &nbsp;
-    </a>
+    </Link>
     <div className="js-navbar-collapse collapse navbar-collapse">
       <ul className={classes.navbar_nav}>
         {[
@@ -93,7 +94,7 @@ const Nav = ({ classes, logoutUser, user }: { classes: Object, logoutUser: Funct
           { route: ATV_ROUTE, label: 'ATV' },
         ].map(link => (
           <li className={classes.navItem} key={link.route}>
-            <a href={link.route} className="nav-link" activeStyle={{ color: 'white' }} exact onClick={handleNavLinkClick}>{link.label}</a>
+            <NavLink to={link.route} className="nav-link" activeStyle={{ color: 'white' }} exact onClick={handleNavLinkClick}>{link.label}</NavLink>
           </li>
         ))}
         <UserName user={user} classComponent={classes.navItem} />

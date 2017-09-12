@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import injectSheet from 'react-jss';
 import { STATIC_PATH } from '../config';
 
@@ -50,15 +51,15 @@ const HomeTypeOverview = ({ type, moto, classes }: {type: string, moto: Object, 
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" key={moto.name}>
         <div className="item">
           <div className={classes.motoAlignOverview}>
-            <a href={type} className="image">
+            <Link to={type} className="image">
               <img src={STATIC_PATH + '/img/home/overview/' + moto.image} alt={moto.name} />
-            </a>
+            </Link>
           </div>
           <div className={classes.description}>
             <span>{moto.description}</span>
           </div>
           <div className={classes.motoAlignOverview}>
-            <a href={type} className={classes.motoLink}><span>{moto.name}</span></a>
+            <Link to={type} className={classes.motoLink}><span>{moto.name}</span></Link>
           </div>
         </div>
       </div>

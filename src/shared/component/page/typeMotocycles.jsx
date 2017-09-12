@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import injectSheet from 'react-jss';
 
@@ -38,12 +39,12 @@ const TypeMotocycles = ({ route, motoList, classes }: {route: string, motoList: 
         <div className="col-xs-12 col-sm-12 col-md-4 col-lg-2" key={moto.name}>
           <div className="item">
             <div className={classes.motoAlign}>
-              <a href={route + '/' + moto.name} className="image">
+              <Link to={route + '/' + moto.name} className="image">
                 <img src={`https://firebasestorage.googleapis.com/v0/b/motoshop-632ec.appspot.com/o/archive%2F${moto.image}?alt=media`} alt={moto.name} height="90" />
-              </a>
+              </Link>
             </div>
             <div className={classes.motoAlign}>
-              <a href={route + '/' + moto.name.replace(/\//gim, '_')} className="name"><span>{moto.name}</span></a>
+              <Link to={route + '/' + moto.name.replace(/\//gim, '_')} className="name"><span>{moto.name}</span></Link>
             </div>
           </div>
         </div>
