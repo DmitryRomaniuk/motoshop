@@ -3,7 +3,7 @@
 .idea/
 node_modules/
 /coverage/
-/lib/
+/build/
 /dist/
 
 # Heroku (remove if you're using the no-service boilerplate)

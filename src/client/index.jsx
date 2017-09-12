@@ -15,10 +15,9 @@ import Tether from 'tether';
 import { reducer as reduxFormReducer } from 'redux-form';
 
 import App from '../shared/app';
-import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config';
+import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR, isProd } from '../shared/config';
 import userReducer from '../shared/reducer/user';
 import listHome from '../shared/reducer/homePage';
-import { isProd } from '../shared/util';
 
 window.jQuery = $;
 window.Tether = Tether;
