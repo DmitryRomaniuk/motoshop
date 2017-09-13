@@ -11,7 +11,7 @@ import { STATIC_PATH, isProd } from '../shared/config';
 import './db';
 
 dotenv.config();
-const WEB_PORT = process.env.PORT || 8000;
+const WEB_PORT = process.env.PORT;
 
 const app = express();
 // flow-disable-next-line
