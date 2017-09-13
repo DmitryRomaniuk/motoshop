@@ -6,6 +6,7 @@ node_modules/
 /build/
 /lib/
 /dist/
+/flow-typed/
 
 # Heroku (remove if you're using the no-service boilerplate)
 /.env
