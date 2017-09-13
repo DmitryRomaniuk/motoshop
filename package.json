@@ -87,7 +87,7 @@
         "socket.io-client": "^2.0.3",
         "tether": "^1.4.0",
         "webpack": "^2.2.1",
-        "webpack-dev-server": "^3.5.6"
+        "webpack-dev-server": "^2.7.0"
     },
     "devDependencies": {}
 }
