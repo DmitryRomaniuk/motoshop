@@ -11,7 +11,7 @@ import { STATIC_PATH, isProd } from '../shared/config';
 import './db';
 
 dotenv.config();
-const WEB_PORT = process.env.PORT;
+const WEB_PORT = process.env.PORT || 8000;
 
 const app = express();
 // flow-disable-next-line
@@ -27,9 +27,8 @@ app.use(STATIC_PATH, express.static('dist'));
 app.use(STATIC_PATH, express.static('public'));
 
 routing(app);
-
 http.listen(WEB_PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server running on port ${String(WEB_PORT)} ${isProd ? '(production)' :
+  console.log(`Server running on port ${WEB_PORT.toString()} ${isProd ? '(production)' :
     '(development).\nKeep "npm run dev:wds" running in an other terminal'}.`);
 });

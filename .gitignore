@@ -4,6 +4,7 @@
 node_modules/
 /coverage/
 /build/
+/lib/
 /dist/
 
 # Heroku (remove if you're using the no-service boilerplate)
