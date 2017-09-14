@@ -29,37 +29,37 @@ const preloadedState = window.__PRELOADED_STATE__;
 /* eslint-enable no-underscore-dangle */
 
 const store = createStore(combineReducers(
-  {
-    form: reduxFormReducer,
-    user: userReducer,
-    listHome,
-  }),
-  {
-    user: Immutable.fromJS(preloadedState.user),
-    listHome: Immutable.fromJS(preloadedState.listHome),
-  },
-  composeEnhancers(applyMiddleware(thunkMiddleware)));
+    {
+        form: reduxFormReducer,
+        user: userReducer,
+        listHome,
+    }),
+    {
+        user: Immutable.fromJS(preloadedState.user),
+        listHome: Immutable.fromJS(preloadedState.listHome),
+    },
+composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR);
 
 const wrapApp = (AppComponent, reduxStore) =>
-  <Provider store={reduxStore}>
+  (<Provider store={reduxStore}>
     <BrowserRouter forceRefresh>
       <AppContainer>
         <AppComponent />
       </AppContainer>
     </BrowserRouter>
-  </Provider>;
+  </Provider>);
 
 ReactDOM.render(wrapApp(App, store), rootEl);
 
 if (module.hot) {
   // flow-disable-next-line
-  module.hot.accept('../shared/app', () => {
+    module.hot.accept('../shared/app', () => {
     // eslint-disable-next-line global-require
-    const NextApp = require('../shared/app').default;
-    ReactDOM.render(wrapApp(NextApp, store), rootEl);
-  });
+        const NextApp = require('../shared/app').default;
+        ReactDOM.render(wrapApp(NextApp, store), rootEl);
+    });
 }
 
 const jssServerSide = document.querySelector(JSS_SSR_SELECTOR);

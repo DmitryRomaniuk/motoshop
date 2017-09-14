@@ -20,6 +20,8 @@
     "compat/compat": 2,
     "max-len": 0,
     "prefer-template": 0,
-    "react/require-default-props": 0
+    "react/require-default-props": 0,
+    "indent": "off",
+    "indent-legacy": "error"
   }
 }

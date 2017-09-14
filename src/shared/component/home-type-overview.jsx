@@ -6,38 +6,38 @@ import injectSheet from 'react-jss';
 import { STATIC_PATH } from '../config';
 
 const styles = {
-  title: {
-    composes: ['col-12'],
-    margin: '10px',
-    fontFamily: 'PFSExtraBlack',
-    fontSize: '2rem',
-  },
-  motoAlignOverview: {
-    composes: ['row'],
-    display: 'flex',
-    justifyContent: 'center',
-    '& img': {
-      width: '100%',
-      maxWidth: '100%',
-      height: 'auto',
+    title: {
+        composes: ['col-12'],
+        margin: '10px',
+        fontFamily: 'PFSExtraBlack',
+        fontSize: '2rem',
     },
-  },
-  description: {
-    composes: ['row'],
-    display: 'flex',
-    justifyContent: 'center',
-    fontFamily: 'ProximaLight',
-    fontSize: '2rem',
-    margin: '10px',
-  },
-  motoLink: {
-    fontFamily: 'ProximaSbold',
-    color: 'white',
-    margin: '10px',
-    '&:hover': {
-      color: 'white',
+    motoAlignOverview: {
+        composes: ['row'],
+        display: 'flex',
+        justifyContent: 'center',
+        '& img': {
+            width: '100%',
+            maxWidth: '100%',
+            height: 'auto',
+        },
     },
-  },
+    description: {
+        composes: ['row'],
+        display: 'flex',
+        justifyContent: 'center',
+        fontFamily: 'ProximaLight',
+        fontSize: '2rem',
+        margin: '10px',
+    },
+    motoLink: {
+        fontFamily: 'ProximaSbold',
+        color: 'white',
+        margin: '10px',
+        '&:hover': {
+            color: 'white',
+        },
+    },
 };
 
 const HomeTypeOverview = ({ type, moto, classes }: {type: string, moto: Object, classes: Object}) =>

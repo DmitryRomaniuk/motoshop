@@ -25,12 +25,12 @@ import { logout } from '../action/user';
 import { userIsAuthenticated, userIsNotAuthenticated } from '../auth';
 
 const getUserName = (user) => {
-  if (user.data) return `Welcome ${user.data.name}!`;
-  return 'Hello guest!';
+    if (user.data) return `Welcome ${user.data.name}!`;
+    return 'Hello guest!';
 };
 const handleNavLinkClick = () => {
-  $('body').scrollTop(0);
-  $('.js-navbar-collapse').collapse('hide');
+    $('body').scrollTop(0);
+    $('.js-navbar-collapse').collapse('hide');
 };
 
 const UserName = ({ user, classComponent }: {user: Object, classComponent: string}) => (<div className={classComponent + ' nav-link brand-text'} >{getUserName(user)}</div>);
@@ -42,37 +42,37 @@ const ProtectedLink = userIsAuthenticated(({ classComponent }: { classComponent:
   </li>),
 );
 const AdminLink = userIsAuthenticated(({ user, classComponent }: {user: Object, classComponent: string}) => {
-  const adminLink = (user.data.isAdmin) ? (<li className={classComponent}>
-    <NavLink to={ADMIN_ROUTE} className="nav-link" onClick={handleNavLinkClick}>Admin cabinet</NavLink>
-  </li>) : null;
-  return adminLink;
+    const adminLink = (user.data.isAdmin) ? (<li className={classComponent}>
+      <NavLink to={ADMIN_ROUTE} className="nav-link" onClick={handleNavLinkClick}>Admin cabinet</NavLink>
+    </li>) : null;
+    return adminLink;
 });
 
 
 const styles = {
-  navbar_brand_icon: {
-    composes: ['navbar-brand'],
-    color: 'red',
-  },
-  navbar_nav: {
-    composes: ['navbar-nav', 'mr-auto'],
-    'justify-content': 'flex-start',
-    width: '100%',
-    'padding-right': '70px',
-  },
-  navItem: {
-    composes: ['nav-item'],
-    '&:last-child': {
-      position: 'absolute',
-      right: '1rem',
+    navbar_brand_icon: {
+        composes: ['navbar-brand'],
+        color: 'red',
     },
-  },
+    navbar_nav: {
+        composes: ['navbar-nav', 'mr-auto'],
+        'justify-content': 'flex-start',
+        width: '100%',
+        'padding-right': '70px',
+    },
+    navItem: {
+        composes: ['nav-item'],
+        '&:last-child': {
+            position: 'absolute',
+            right: '1rem',
+        },
+    },
 };
 
 
 const Nav = ({ classes, logoutUser, user }: { classes: Object, logoutUser: Function, user: Object }) =>
-  <nav className="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-    <button className="navbar-toggler navbar-toggler-right" type="button" role="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+  (<nav className="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
       <span className="navbar-toggler-icon" />
     </button>
     <Link to={HOME_PAGE_ROUTE} className={classes.navbar_brand_icon}>
@@ -106,14 +106,14 @@ const Nav = ({ classes, logoutUser, user }: { classes: Object, logoutUser: Funct
         </li>
       </ul>
     </div>
-  </nav>;
+  </nav>);
 
 const mapStateToProps = state => ({
-  user: state.user.toJS(),
+    user: state.user.toJS(),
 });
 
 const mapDispatchToProps = {
-  logoutUser: logout,
+    logoutUser: logout,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(Nav));

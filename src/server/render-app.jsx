@@ -12,19 +12,19 @@ import App from '../shared/app';
 import { APP_CONTAINER_CLASS, JSS_SSR_CLASS, STATIC_PATH, WDS_PORT, isProd } from '../shared/config';
 
 const renderApp = (location: string, plainPartialState: ?Object, routerContext: ?Object = {}) => {
-  const store = initStore(plainPartialState);
-  const sheets = new SheetsRegistry();
-  const appHtml = ReactDOMServer.renderToString(
-    <Provider store={store}>
-      <StaticRouter location={location} context={routerContext}>
-        <SheetsRegistryProvider registry={sheets}>
-          <App />
-        </SheetsRegistryProvider>
-      </StaticRouter>
-    </Provider>);
-  const head = Helmet.rewind();
+    const store = initStore(plainPartialState);
+    const sheets = new SheetsRegistry();
+    const appHtml = ReactDOMServer.renderToString(
+      <Provider store={store}>
+        <StaticRouter location={location} context={routerContext}>
+          <SheetsRegistryProvider registry={sheets}>
+            <App />
+          </SheetsRegistryProvider>
+        </StaticRouter>
+      </Provider>);
+    const head = Helmet.rewind();
 
-  return (
+    return (
     `<!doctype html>
     <html>
       <head>
@@ -71,7 +71,7 @@ const renderApp = (location: string, plainPartialState: ?Object, routerContext: 
         <script src="${isProd ? STATIC_PATH : `http://localhost:${WDS_PORT}/dist`}/js/bundle.js"></script>
       </body>
     </html>`
-  );
+    );
 };
 
 export default renderApp;

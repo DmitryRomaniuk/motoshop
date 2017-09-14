@@ -11,10 +11,10 @@ export const userLoggedIn = createAction(USER_LOGGED_IN);
 export const userLoggedOut = createAction(USER_LOGGED_OUT);
 
 export const login = (data: {data: any}) => (dispatch: Function) => {
-  dispatch(userLoggingIn());
-  return setTimeout(() => {
-    dispatch(userLoggedIn(data));
-  }, 1);
+    dispatch(userLoggingIn());
+    return setTimeout(() => {
+        dispatch(userLoggedIn(data));
+    }, 1);
 };
 
 export const logout = () => (dispatch: Function) => dispatch(userLoggedOut());

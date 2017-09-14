@@ -12,5 +12,5 @@ const Protected = ({ authData }: Props) => (
       {`This is a protected page, you must be logged in if you are seeing this. Welcome ${authData.name}`}
     </div>
   </div>
-  );
+);
 export default connect(state => ({ authData: state.user.get('data').toJS() }))(Protected);

@@ -2,7 +2,7 @@
 
 import Immutable from 'immutable';
 import type {
-    fromJS as Immut,
+  fromJS as Immut,
 } from 'immutable';
 import {
   USER_LOGGING_IN,
@@ -12,27 +12,27 @@ import {
 
 
 const initialState = Immutable.fromJS({
-  data: null,
-  isLoading: false,
+    data: null,
+    isLoading: false,
 });
 
 const userReducer = (state: Immut = initialState, action: {
     type: string,
     payload: any
 }) => {
-  switch (action.type) {
+    switch (action.type) {
     case USER_LOGGING_IN:
-      return state.set('isLoading', true);
+        return state.set('isLoading', true);
     case USER_LOGGED_IN:
-      return state.set('isLoading', false)
-      .set('data', Immutable.fromJS({}))
-      .setIn(['data', 'name'], action.payload.login)
-      .setIn(['data', 'isAdmin'], action.payload.isAdmin);
+        return state.set('isLoading', false)
+        .set('data', Immutable.fromJS({}))
+        .setIn(['data', 'name'], action.payload.login)
+        .setIn(['data', 'isAdmin'], action.payload.isAdmin);
     case USER_LOGGED_OUT:
-      return initialState;
+        return initialState;
     default:
-      return state;
-  }
+        return state;
+    }
 };
 
 export default userReducer;

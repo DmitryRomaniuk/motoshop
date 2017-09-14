@@ -6,22 +6,22 @@ import Helmet from 'react-helmet';
 import injectSheet from 'react-jss';
 
 const styles = {
-  title: {
-    composes: ['col-12'],
-    'font-family': 'PFSExtraBlack',
-    'font-size': '2rem',
-  },
-  motoAlign: {
-    composes: ['row'],
-    display: 'flex',
-    'justify-content': 'center',
-  },
+    title: {
+        composes: ['col-12'],
+        'font-family': 'PFSExtraBlack',
+        'font-size': '2rem',
+    },
+    motoAlign: {
+        composes: ['row'],
+        display: 'flex',
+        'justify-content': 'center',
+    },
 };
 
 const title = 'Hello Page';
 
 const TypeMotocycles = ({ route, motoList, classes }: {route: string, motoList: Object, classes: Object}) =>
-  <div className="container mt-4">
+  (<div className="container mt-4">
     <Helmet
       title={title}
       meta={[
@@ -50,6 +50,6 @@ const TypeMotocycles = ({ route, motoList, classes }: {route: string, motoList: 
         </div>
       ))}
     </div>
-  </div>;
+  </div>);
 
 export default injectSheet(styles)(TypeMotocycles);

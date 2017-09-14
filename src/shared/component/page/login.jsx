@@ -9,10 +9,10 @@ import SimpleForm from '../form/SimpleForm';
 import authUserServer from '../../action/authUserServer';
 
 const styles = {
-  logo: {
-    'font-family': 'PFSExtraBlack',
-    'font-size': '2rem',
-  },
+    logo: {
+        'font-family': 'PFSExtraBlack',
+        'font-size': '2rem',
+    },
 };
 
 const title = 'Login Page';
@@ -20,7 +20,7 @@ const title = 'Login Page';
 const LoginPage = ({ classes, getAuthUserServer }: {
   classes: Object, getAuthUserServer: Function,
   }) =>
-    <div className="container mt-4">
+    (<div className="container mt-4">
       <Helmet
         title={title}
         meta={[
@@ -35,6 +35,6 @@ const LoginPage = ({ classes, getAuthUserServer }: {
           <SimpleForm onSubmit={getAuthUserServer} />
         </div>
       </div>
-    </div>;
+    </div>);
 
 export default connect(null, { getAuthUserServer: authUserServer })(injectSheet(styles)(LoginPage));
