@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import Helmet from 'react-helmet';
-import { SheetsRegistry, SheetsRegistryProvider } from 'react-jss';
+import { JssProvider, SheetsRegistry } from 'react-jss';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
 
@@ -17,9 +17,9 @@ const renderApp = (location: string, plainPartialState: ?Object, routerContext: 
     const appHtml = ReactDOMServer.renderToString(
       <Provider store={store}>
         <StaticRouter location={location} context={routerContext}>
-          <SheetsRegistryProvider registry={sheets}>
+          <JssProvider registry={sheets}>
             <App />
-          </SheetsRegistryProvider>
+          </JssProvider>
         </StaticRouter>
       </Provider>);
     const head = Helmet.rewind();
