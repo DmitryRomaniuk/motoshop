@@ -33,13 +33,6 @@ import {
 } from './routes';
 import { getRoutes } from './action/homePage';
 
-import { userIsAuthenticatedRedir, userIsNotAuthenticatedRedir, userIsAdminRedir } from './auth';
-
-// Need to apply the hocs here to avoid applying them inside the render method
-const Login = userIsNotAuthenticatedRedir(LoginPage);
-const Protected = userIsAuthenticatedRedir(ProtectedComponent);
-const Admin = userIsAuthenticatedRedir(userIsAdminRedir(AdminComponent));
-
 class App extends Component {
     static defaultProps: Object;
 
@@ -63,9 +56,9 @@ class App extends Component {
             <Route path={CUSTOM_ROUTE} render={() => <TypeMotocycles route={CUSTOM_ROUTE} motoList={this.props.motolist.CUSTOM_ROUTE} />} />
             <Route path={V125CC_ROUTE} render={() => <TypeMotocycles route={V125CC_ROUTE} motoList={this.props.motolist.V125CC_ROUTE} />} />
             <Route path={ATV_ROUTE} render={() => <TypeMotocycles route={ATV_ROUTE} motoList={this.props.motolist.ATV_ROUTE} />} />
-            <Route path={LOGIN_ROUTE} render={() => <Login />} />
-            <Route path={PROTECTED_ROUTE} render={() => <Protected />} />
-            <Route path={ADMIN_ROUTE} render={() => <Admin />} />
+            <Route path={LOGIN_ROUTE} component={LoginPage} />
+            <Route path={PROTECTED_ROUTE} component={ProtectedComponent} />
+            <Route path={ADMIN_ROUTE} component={AdminComponent} />
             <Route component={NotFoundPage} />
           </Switch>
           <Footer />

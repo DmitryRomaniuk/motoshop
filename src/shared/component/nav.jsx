@@ -22,7 +22,6 @@ import {
   ADMIN_ROUTE,
 } from '../routes';
 import { logout } from '../action/user';
-import { userIsAuthenticated, userIsNotAuthenticated } from '../auth';
 
 const getUserName = (user) => {
     if (user.data) return `Welcome ${user.data.name}!`;
@@ -34,19 +33,19 @@ const handleNavLinkClick = () => {
 };
 
 const UserName = ({ user, classComponent }: {user: Object, classComponent: string}) => (<div className={classComponent + ' nav-link brand-text'} >{getUserName(user)}</div>);
-const LoginLink = userIsNotAuthenticated(() => <NavLink className="nav-link" to={LOGIN_ROUTE}>Login</NavLink>);
-const LogoutLink = userIsAuthenticated(({ logoutUser }: { logoutUser: Function }) => <NavLink to="/" className="nav-link" onClick={logoutUser}>Logout</NavLink>);
-const ProtectedLink = userIsAuthenticated(({ classComponent }: { classComponent: string }) => (
+const LoginLink = () => <NavLink className="nav-link" to={LOGIN_ROUTE}>Login</NavLink>;
+const LogoutLink = ({ logoutUser }: { logoutUser: Function }) => <NavLink to="/" className="nav-link" onClick={logoutUser}>Logout</NavLink>;
+const ProtectedLink = ({ classComponent }: { classComponent: string }) => (
   <li className={classComponent}>
     <NavLink to={PROTECTED_ROUTE} className="nav-link" onClick={handleNavLinkClick}>My cabinet</NavLink>
-  </li>),
+  </li>
 );
-const AdminLink = userIsAuthenticated(({ user, classComponent }: {user: Object, classComponent: string}) => {
+const AdminLink = ({ user, classComponent }: {user: Object, classComponent: string}) => {
     const adminLink = (user.data.isAdmin) ? (<li className={classComponent}>
       <NavLink to={ADMIN_ROUTE} className="nav-link" onClick={handleNavLinkClick}>Admin cabinet</NavLink>
     </li>) : null;
     return adminLink;
-});
+};
 
 
 const styles = {
