@@ -41,6 +41,7 @@ const ProtectedLink = ({ classComponent }: { classComponent: string }) => (
   </li>
 );
 const AdminLink = ({ user, classComponent }: {user: Object, classComponent: string}) => {
+    if (!user.data) return null;
     const adminLink = (user.data.isAdmin) ? (<li className={classComponent}>
       <NavLink to={ADMIN_ROUTE} className="nav-link" onClick={handleNavLinkClick}>Admin cabinet</NavLink>
     </li>) : null;
