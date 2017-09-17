@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch } from 'react-router';
+import { Switch, withRouter } from 'react-router';
 import { Route } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
@@ -89,4 +89,4 @@ const mapStateToProps = state => ({
     motolist: state.listHome.get('listRoutes').toJS(),
 });
 
-export default connect(mapStateToProps, { getListRoutes: getRoutes })(App);
+export default withRouter(connect(mapStateToProps, { getListRoutes: getRoutes })(App));
