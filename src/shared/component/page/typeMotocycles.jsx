@@ -40,7 +40,7 @@ const TypeMotocycles = ({ route, motoList, classes }: {route: string, motoList: 
           <div className="item">
             <div className={classes.motoAlign}>
               <Link to={route + '/' + moto.name} className="image">
-                <img src={`https://firebasestorage.googleapis.com/v0/b/motoshop-632ec.appspot.com/o/archive%2F${moto.image}?alt=media`} alt={moto.name} height="90" />
+                <img src={(moto.image) ? `https://firebasestorage.googleapis.com/v0/b/motoshop-632ec.appspot.com/o/archive%2F${moto.image}?alt=media` : ''} alt={moto.name} height="90" />
               </Link>
             </div>
             <div className={classes.motoAlign}>

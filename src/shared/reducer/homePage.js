@@ -13,13 +13,7 @@ import {
 } from '../action/homePage';
 
 const initialState = Immutable.fromJS({
-    listMoto: {
-        STREET: {
-            name: 'STREET',
-            image: 'street.jpg',
-            description: 'Attitude. All-round style. Sheer riding enjoyment',
-        },
-    },
+    listMoto: {},
     listRoutes: {
         SUPER_SPORT_ROUTE: {
             name: '',

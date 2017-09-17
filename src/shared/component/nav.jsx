@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
 import {
@@ -33,21 +33,20 @@ const handleNavLinkClick = () => {
 };
 
 const UserName = ({ user, classComponent }: {user: Object, classComponent: string}) => (<div className={classComponent + ' nav-link brand-text'} >{getUserName(user)}</div>);
-const LoginLink = () => <NavLink className="nav-link" to={LOGIN_ROUTE}>Login</NavLink>;
-const LogoutLink = ({ logoutUser }: { logoutUser: Function }) => <NavLink to="/" className="nav-link" onClick={logoutUser}>Logout</NavLink>;
-const ProtectedLink = ({ classComponent }: { classComponent: string }) => (
+const LoginLink = ({ user }: {user: ?Object}) => ((!user) ? <NavLink className="nav-link" to={LOGIN_ROUTE}>Login</NavLink> : null);
+const LogoutLink = ({ user, logoutUser }: { user: ?Object, logoutUser: Function }) => ((!user) ? null : <NavLink to="/" className="nav-link" onClick={logoutUser}>Logout</NavLink>);
+const ProtectedLink = ({ user, classComponent }: { user: Object, classComponent: string }) => ((user.data) ? (
   <li className={classComponent}>
     <NavLink to={PROTECTED_ROUTE} className="nav-link" onClick={handleNavLinkClick}>My cabinet</NavLink>
   </li>
-);
+    ) : null);
+
 const AdminLink = ({ user, classComponent }: {user: Object, classComponent: string}) => {
     if (!user.data) return null;
-    const adminLink = (user.data.isAdmin) ? (<li className={classComponent}>
+    return (user.data.isAdmin) ? (<li className={classComponent}>
       <NavLink to={ADMIN_ROUTE} className="nav-link" onClick={handleNavLinkClick}>Admin cabinet</NavLink>
     </li>) : null;
-    return adminLink;
 };
-
 
 const styles = {
     navbar_brand_icon: {
@@ -101,8 +100,8 @@ const Nav = ({ classes, logoutUser, user }: { classes: Object, logoutUser: Funct
         <ProtectedLink user={user} classComponent={classes.navItem} />
         <AdminLink user={user} classComponent={classes.navItem} />
         <li className={classes.navItem}>
-          <LoginLink />
-          <LogoutLink logoutUser={logoutUser} />
+          <LoginLink user={user.data} />
+          <LogoutLink user={user.data} logoutUser={logoutUser} />
         </li>
       </ul>
     </div>
@@ -116,4 +115,4 @@ const mapDispatchToProps = {
     logoutUser: logout,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(Nav));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(Nav)));
