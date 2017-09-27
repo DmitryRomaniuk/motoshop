@@ -12,6 +12,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import Tether from 'tether';
+import Popper from 'popper.js';
 import { reducer as reduxFormReducer } from 'redux-form';
 
 import App from '../shared/app';
@@ -21,6 +22,7 @@ import listHome from '../shared/reducer/homePage';
 
 window.jQuery = $;
 window.Tether = Tether;
+window.Popper = Popper;
 require('bootstrap');
 
 /* eslint-disable no-underscore-dangle */

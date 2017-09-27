@@ -4,6 +4,7 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import injectSheet from 'react-jss';
+import singleMoto from './singleMoto';
 
 const styles = {
     title: {
@@ -19,12 +20,6 @@ const styles = {
 };
 
 const title = 'Hello Page';
-
-const singleMoto = ({ match }: { match: Object}) => (
-  <div key={`single-moto-${match.params.Id}`}>
-    <h1>{match.params.Id}</h1>
-  </div>
-);
 
 const TypeMotocycles = ({ match, motoList, classes }: {motoList: Object, match: Object, classes: Object}) =>
   (<div className="container mt-4">

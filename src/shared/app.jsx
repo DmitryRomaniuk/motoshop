@@ -6,7 +6,7 @@ import { Switch, withRouter } from 'react-router';
 import { Route } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import TypeMotocycles from './component/page/typeMotocycles';
+import TypeMotocycles from './component/typeMotocycles';
 import LoginPage from './component/page/login';
 import AdminComponent from './component/page/admin';
 import ProtectedComponent from './component/page/protected';
@@ -32,7 +32,7 @@ class App extends Component {
           <Switch>
             <Route exact path={routes.HOME_PAGE_ROUTE} component={HomePage} />
             {
-                  Object.keys(this.props.motolist).map(elem => (<Route path={routes[elem]} render={props => <TypeMotocycles {...props} motoList={this.props.motolist[elem]} />} />))
+                  Object.keys(this.props.motolist).map(elem => (<Route key={routes[elem]} path={routes[elem]} render={props => <TypeMotocycles {...props} motoList={this.props.motolist[elem]} />} />))
               }
             <Route path={routes.LOGIN_ROUTE} component={LoginPage} />
             <Route path={routes.PROTECTED_ROUTE} component={ProtectedComponent} />
