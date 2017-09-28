@@ -44,12 +44,12 @@ const TypeMotocycles = ({ match, motoList, classes }: {motoList: Object, match: 
               <div className="col-xs-12 col-sm-12 col-md-4 col-lg-2" key={moto.name}>
                 <div className="item">
                   <div className={classes.motoAlign}>
-                    <Link to={match.url + '/' + moto.name} className="image">
+                    <Link to={match.url + '/' + moto.name.replace(/\//gim, '')} className="image">
                       <img src={(moto.image) ? `https://firebasestorage.googleapis.com/v0/b/motoshop-632ec.appspot.com/o/archive%2F${moto.image}?alt=media` : ''} alt={moto.name} height="90" />
                     </Link>
                   </div>
                   <div className={classes.motoAlign}>
-                    <Link to={match.url + '/' + moto.name.replace(/\//gim, '_')} className="name"><span>{moto.name}</span></Link>
+                    <Link to={match.url + '/' + moto.name.replace(/\//gim, '')} className="name"><span>{moto.name}</span></Link>
                   </div>
                 </div>
               </div>

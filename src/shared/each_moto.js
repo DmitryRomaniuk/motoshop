@@ -55,4 +55,44 @@ module.exports = {
         description: 'The Gold Wing F6C in detail',
         count_img: 5,
     },
+    CBR125R: {
+        description: 'User-friendly handling, and a free-revving engine packaged in a stylish body of full-size proportions.',
+        count_img: 4,
+    },
+    CB125F: {
+        description: 'UP CLOSE',
+        count_img: 5,
+    },
+    MSX125: {
+        description: 'MSX125 is packed with features and upgrades for 2016 to enhance your ride.',
+        count_img: 7,
+    },
+    CRF50F: {
+        description: 'Get a feel for the starting line. This bike is built for fun, and made to last.',
+        count_img: 6,
+    },
+    CRF150RRB: {
+        description: 'Pushing hard for the champions of tomorrow - the CRF150R is a fully-grown motorcycle',
+        count_img: 4,
+    },
+    SilverWing: {
+        description: 'TAKE A CLOSER LOOK',
+        count_img: 4,
+    },
+    PCX150: {
+        description: 'TAKE A CLOSER LOOK',
+        count_img: 4,
+    },
+    TRX700XX: {
+        description: 'The Rincon is built with all the quality, reliability and advanced features expected of a Honda.',
+        count_img: 4,
+    },
+    TRX250X: {
+        description: 'The Fourtrax 250 is built with all the quality, reliability and advanced features expected of a Honda ATV.',
+        count_img: 4,
+    },
+    NC750XMTDCT: {
+        description: 'Packed with new feature upgrades that enhance your ride',
+        count_img: 9,
+    },
 };
