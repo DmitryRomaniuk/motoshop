@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, withRouter } from 'react-router';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import TypeMotocycles from './component/typeMotocycles';
@@ -30,6 +30,7 @@ class App extends Component {
           <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
           <Nav />
           <Switch>
+            <Redirect from="/home" to="/" />
             <Route exact path={routes.HOME_PAGE_ROUTE} component={HomePage} />
             {
                   Object.keys(this.props.motolist).map(elem => (<Route key={routes[elem]} path={routes[elem]} render={props => <TypeMotocycles {...props} motoList={this.props.motolist[elem]} />} />))

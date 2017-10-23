@@ -1,5 +1,7 @@
 // @flow
 
+import jwt from 'jsonwebtoken';
+
 import {
   homePage,
   helloPage,
@@ -85,7 +87,19 @@ export default (app: Object) => {
     });
 
     app.post(LOGIN_ROUTE, (req, res) => {
-        res.redirect(HOME_PAGE_ROUTE);
+        const promise = new Promise((resolve, reject) => {
+            jwt.sign({ data: req.body }, 'secret', { algorithm: 'HS512' }, (err, token) => {
+                if (err) reject(err);
+                resolve(token);
+            });
+        });
+        return promise
+            .then((result) => {
+                res.cookie('token', result, { maxAge: 900000, httpOnly: true });
+                res.json(result);
+            })
+            .catch(err => res.json(err));
+        // res.redirect(HOME_PAGE_ROUTE);
     });
 
     app.get(HELLO_PAGE_ROUTE, (req, res) => {

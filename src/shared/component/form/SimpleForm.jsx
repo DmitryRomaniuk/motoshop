@@ -9,6 +9,7 @@ import warn from './warn';
 import submit from './submit';
 import renderFieldInput from './renderFieldInput';
 import { login } from '../../action/user';
+import authUserServer from '../../action/authUserServer';
 
 const styles = {
     form: {
@@ -21,12 +22,13 @@ const styles = {
     },
 };
 
-const SimpleForm = ({ handleSubmit, pristine, reset, submitting, classes, loginUser }: { handleSubmit: Function,
-pristine: boolean, reset: Function, loginUser: Function, submitting: boolean, classes: Object }) => {
-    function onSubmit(values) {
+
+const SimpleForm = ({ handleSubmit, pristine, reset, submitting, classes, loginUser, auth }: { handleSubmit: Function,
+pristine: boolean, reset: Function, loginUser: Function, auth: Function, submitting: boolean, classes: Object }) => {
+    function submitResult(values) {
         const resultSubmit = submit(values);
         if (resultSubmit === 'submited') {
-      // console.log(values);
+            auth(values);
             loginUser(values);
             return reset();
         }
@@ -34,7 +36,7 @@ pristine: boolean, reset: Function, loginUser: Function, submitting: boolean, cl
     }
 
     return (
-      <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+      <form onSubmit={handleSubmit(submitResult)} className={classes.form}>
         <div className="form-group">
           <div>
             <Field
@@ -79,7 +81,7 @@ pristine: boolean, reset: Function, loginUser: Function, submitting: boolean, cl
     );
 };
 
-export default connect(null, { loginUser: login })(reduxForm({
+export default connect(null, { loginUser: login, auth: authUserServer })(reduxForm({
     form: 'login',
     validate,
     warn,

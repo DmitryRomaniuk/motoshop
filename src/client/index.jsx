@@ -8,8 +8,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import createHistory from 'history/createBrowserHistory';
+import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
 import Tether from 'tether';
 import Popper from 'popper.js';
@@ -29,28 +31,30 @@ require('bootstrap');
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 const preloadedState = window.__PRELOADED_STATE__;
 /* eslint-enable no-underscore-dangle */
-
+const history = createHistory();
+const middlewareRouter = routerMiddleware(history);
 const store = createStore(combineReducers(
     {
         form: reduxFormReducer,
         user: userReducer,
         listHome,
+        router: routerReducer,
     }),
     {
         user: Immutable.fromJS(preloadedState.user),
         listHome: Immutable.fromJS(preloadedState.listHome),
     },
-composeEnhancers(applyMiddleware(thunkMiddleware)));
+composeEnhancers(applyMiddleware(thunkMiddleware, middlewareRouter)));
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR);
 
 const wrapApp = (AppComponent, reduxStore) =>
   (<Provider store={reduxStore}>
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <AppContainer>
         <AppComponent />
       </AppContainer>
-    </BrowserRouter>
+    </ConnectedRouter>
   </Provider>);
 
 ReactDOM.render(wrapApp(App, store), rootEl);
