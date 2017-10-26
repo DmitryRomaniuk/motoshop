@@ -68,6 +68,7 @@
     "jsonwebtoken": "^8.1.0",
     "mongoose": "^4.11.13",
     "nodemon": "^1.11.0",
+    "pg": "^7.3.0",
     "popper.js": "^1.12.5",
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
@@ -92,5 +93,7 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.9.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-plugin-flowtype": "^2.39.1"
+  }
 }
