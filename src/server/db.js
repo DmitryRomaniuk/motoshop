@@ -9,15 +9,34 @@ const client = new Client({
     database: parseURI[5],
     port: parseURI[4],
     host: parseURI[3],
-    ssl: true,
+    ssl: {
+        rejectUnauthorized: false,
+    },
 });
+
 client.connect();
 
-client.query('SELECT NOW()', (err, res) => {
-    // eslint-disable-next-line no-console
-    console.log(err, res);
-    client.end();
-});
+const createTableText = `
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+CREATE TEMP TABLE IF NOT EXISTS users (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  data JSONB
+);
+`;
+const newUser = { email: 'brian.m.carlson@gmail.com' };
+client.query(createTableText)
+    .then(() => {
+        client.query('INSERT INTO users(data) VALUES($1)', [newUser])
+            .then(() => {
+                client.query('SELECT * FROM users')
+                    .then(({ rows }) => console.log(rows[0]))
+                    .catch(e => console.error(e.stack));
+            })
+            .catch(e => console.error(e.stack));
+    })
+    .catch(e => console.error(e.stack));
+
 
 const admin = require('firebase-admin');
 const serviceAccount = require('./motoshop-firebase-access.json');
