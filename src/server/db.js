@@ -1,5 +1,6 @@
 // @flow
 const { Client } = require('pg');
+const jwt = require('jsonwebtoken');
 
 const connectionString = process.env.DATABASE_URL;
 const parseURI = connectionString.match(/(\w+):([\w\d]+)@([\w\d.-]+):(\d+)\/([\d\w]+)/);
@@ -17,25 +18,25 @@ const client = new Client({
 client.connect();
 
 const createTableText = `
-CREATE EXTENSION IF NOT EXISTS "pgcrypto";
-
-CREATE TEMP TABLE IF NOT EXISTS users (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  data JSONB
+CREATE TABLE IF NOT EXISTS users (
+  name varchar(160),
+  hash varchar(320)
 );
 `;
-const newUser = { email: 'brian.m.carlson@gmail.com' };
+const newUser = { user: 'kanumowa@gmail.com', password: 'password2' };
+
 client.query(createTableText)
     .then(() => {
-        client.query('INSERT INTO users(data) VALUES($1)', [newUser])
-            .then(() => {
-                client.query('SELECT * FROM users')
-                    .then(({ rows }) => console.log(rows[0]))
-                    .catch(e => console.error(e.stack));
-            })
-            .catch(e => console.error(e.stack));
+        // const hashsumm = jwt.sign({ data: newUser.password }, 'secret', { algorithm: 'HS512' });
+        // return client.query('INSERT INTO users (name, hash) VALUES($1,$2)', [newUser.user, hashsumm])
+        //     .catch(e => console.error(e.stack));
     })
-    .catch(e => console.error(e.stack));
+    .then(() => client.query('SELECT * FROM users WHERE users.name = $1', [newUser.user])
+            .then(({ rows }) => {
+                rows.forEach(row => console.log(jwt.verify(row.hash, 'secret', { algorithm: 'HS512' }).data));
+            })
+            .catch(e => console.error(e.stack)))
+    .catch(e => console.error(e));
 
 
 const admin = require('firebase-admin');
