@@ -8,7 +8,6 @@ import validate from './validate';
 import warn from './warn';
 import submit from './submit';
 import renderFieldInput from './renderFieldInput';
-import { login } from '../../action/user';
 import authUserServer from '../../action/authUserServer';
 
 const styles = {
@@ -23,13 +22,12 @@ const styles = {
 };
 
 
-const SimpleForm = ({ handleSubmit, pristine, reset, submitting, classes, loginUser, auth }: { handleSubmit: Function,
-pristine: boolean, reset: Function, loginUser: Function, auth: Function, submitting: boolean, classes: Object }) => {
+const SimpleForm = ({ handleSubmit, pristine, reset, submitting, classes, auth }: { handleSubmit: Function,
+pristine: boolean, reset: Function, auth: Function, submitting: boolean, classes: Object }) => {
     function submitResult(values) {
         const resultSubmit = submit(values);
         if (resultSubmit === 'submited') {
             auth(values);
-            loginUser(values);
             return reset();
         }
         return resultSubmit;
@@ -40,7 +38,7 @@ pristine: boolean, reset: Function, loginUser: Function, auth: Function, submitt
         <div className="form-group">
           <div>
             <Field
-              name="login"
+              name="email"
               label="Login Name"
               type="text"
               placeholder="asd@dsa.com"
@@ -81,7 +79,7 @@ pristine: boolean, reset: Function, loginUser: Function, auth: Function, submitt
     );
 };
 
-export default connect(null, { loginUser: login, auth: authUserServer })(reduxForm({
+export default connect(null, { auth: authUserServer })(reduxForm({
     form: 'login',
     validate,
     warn,

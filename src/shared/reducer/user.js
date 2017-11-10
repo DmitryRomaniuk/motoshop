@@ -26,7 +26,7 @@ const userReducer = (state: Immut = initialState, action: {
     case USER_LOGGED_IN:
         return state.set('isLoading', false)
         .set('data', Immutable.fromJS({ name: '', isAdmin: false }))
-        .setIn(['data', 'name'], action.payload.login)
+        .setIn(['data', 'name'], action.payload.email)
         .setIn(['data', 'isAdmin'], action.payload.isAdmin);
     case USER_LOGGED_OUT:
         return initialState;

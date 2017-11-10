@@ -4,6 +4,8 @@ import compression from 'compression';
 import express from 'express';
 import { Server } from 'http';
 import bodyParser from 'body-parser';
+import session from 'express-session';
+import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import routing from './routing';
@@ -25,6 +27,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(bodyParser.text({ type: 'text/html' }));
 app.use(STATIC_PATH, express.static('dist'));
 app.use(STATIC_PATH, express.static('public'));
+app.use(session({ secret: 'cats' }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 routing(app);
 http.listen(WEB_PORT, () => {

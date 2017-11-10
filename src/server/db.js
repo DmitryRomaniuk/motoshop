@@ -1,6 +1,6 @@
 // @flow
 // const { Client } = require('pg');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const Sequelize = require('sequelize');
 
 /* eslint-disable no-console */
@@ -32,7 +32,7 @@ sequelize
   .catch((err) => {
       console.error('Unable to connect to the database:', err);
   });
-const User = sequelize.define('users', {
+export const User = sequelize.define('users', {
     email: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -45,16 +45,6 @@ const User = sequelize.define('users', {
         type: Sequelize.STRING,
     },
 });
-
-  // force: true will drop the table if it already exists
-User.sync({ force: true }).then(() =>
-    // Table created
-     User.create({
-         email: 'John@gmail.com',
-         password: jwt.sign({ data: 'password' }, 'secret', { algorithm: 'HS512' }),
-         name: 'John',
-     }),
-  ).then(() => User.findAll().then(res => console.log(res[0].get('email'))));
 
 // const client = new Client({
 //     user: parseURI[1],

@@ -1,4 +1,5 @@
 import { push } from 'react-router-redux';
+import { login } from './user';
 
 export default values => (dispatch) => {
     const myHeaders = new Headers({ 'Content-Type': 'application/json' });
@@ -15,6 +16,7 @@ export default values => (dispatch) => {
     .then(res => res.json())
     .then((res) => {
         localStorage.setItem('token', res);
+        dispatch(login(values));
         dispatch(push('/home'));
     });
   /* eslint-enable no-console */

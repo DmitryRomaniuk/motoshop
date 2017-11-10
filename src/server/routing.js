@@ -1,6 +1,8 @@
 // @flow
 
 import jwt from 'jsonwebtoken';
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
 
 import {
   homePage,
@@ -14,6 +16,7 @@ import {
   users,
   homeList,
   homeRoutes,
+  User,
 } from './db';
 
 import {
@@ -29,6 +32,8 @@ import {
   CUSTOM_ROUTE,
   V125CC_ROUTE,
   LOGIN_ROUTE,
+//  PROTECTED_ROUTE,
+//  ADMIN_ROUTE,
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
   HOME_PAGE_GET_ROUTES_LIST_ROUTE,
@@ -36,6 +41,34 @@ import {
 } from '../shared/routes';
 
 import renderApp from './render-app';
+
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+},
+    ((username, password, done) => {
+        User.findOne({ where: { email: username } }).then((user) => {
+            if (!user.get('email')) {
+                return done(null, false, { message: 'Incorrect username.' });
+            }
+            if (user.get('password') !== password) {
+                return done(null, false, { message: 'Incorrect password.' });
+            }
+            return done(null, user);
+        })
+        .catch(err => done(err));
+    }),
+    ));
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+    User.findById(id, (err, user) => {
+        done(err, user);
+    });
+});
 
 export default (app: Object) => {
     app.get(HOME_PAGE_ROUTE, (req, res) => {
@@ -86,7 +119,7 @@ export default (app: Object) => {
         res.send(renderApp(req.url));
     });
 
-    app.post(LOGIN_ROUTE, (req, res) => {
+    app.post(LOGIN_ROUTE, passport.authenticate('local', { session: false }), (req, res) => {
         const promise = new Promise((resolve, reject) => {
             jwt.sign({ data: req.body }, 'secret', { algorithm: 'HS512' }, (err, token) => {
                 if (err) reject(err);
@@ -100,6 +133,14 @@ export default (app: Object) => {
             })
             .catch(err => res.json(err));
         // res.redirect(HOME_PAGE_ROUTE);
+    });
+
+    app.get(LOGIN_ROUTE, (req, res) => {
+        res.send(renderApp(req.url));
+    });
+
+    app.get(LOGIN_ROUTE, (req, res) => {
+        res.send(renderApp(req.url));
     });
 
     app.get(HELLO_PAGE_ROUTE, (req, res) => {
