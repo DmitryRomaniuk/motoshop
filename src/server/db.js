@@ -89,7 +89,7 @@ export const User = sequelize.define('users', {
 //   .catch(e => console.error(e));
 
 const admin = require('firebase-admin');
-const serviceAccount = require('./motoshop-firebase-access.json');
+const serviceAccount = require('./motoshop-firebase-access.js');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),

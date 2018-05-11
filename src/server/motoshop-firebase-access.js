@@ -1,4 +1,4 @@
-{
+module.exports = {
   "type": "service_account",
   "project_id": "motoshop-632ec",
   "private_key_id": "19fbd7dc9e83bdf5b7b552f24cc3b22bd065ef07",
@@ -9,4 +9,4 @@
   "token_uri": "https://accounts.google.com/o/oauth2/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nodejsserver%40motoshop-632ec.iam.gserviceaccount.com"
-}
+};
