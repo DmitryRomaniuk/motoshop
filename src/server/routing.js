@@ -47,12 +47,12 @@ passport.use(new LocalStrategy({
     passwordField: 'password',
 },
     ((username, password, done) => {
-        User.findOne({ where: { email: username } }).then((user) => {
-            if (!user.get('email')) {
-                return done(null, false, { message: 'Incorrect username.' });
+        return User.findOne({ where: { email: username } }).then((user) => {
+            if (user === null) {
+                return done(null, true);
             }
             if (user.get('password') !== password) {
-                return done(null, false, { message: 'Incorrect password.' });
+                return done(null, false, { message: 'Incorrect username or password.' });
             }
             return done(null, user);
         })
@@ -133,14 +133,6 @@ export default (app: Object) => {
             })
             .catch(err => res.json(err));
         // res.redirect(HOME_PAGE_ROUTE);
-    });
-
-    app.get(LOGIN_ROUTE, (req, res) => {
-        res.send(renderApp(req.url));
-    });
-
-    app.get(LOGIN_ROUTE, (req, res) => {
-        res.send(renderApp(req.url));
     });
 
     app.get(HELLO_PAGE_ROUTE, (req, res) => {
