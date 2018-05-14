@@ -47,7 +47,7 @@ passport.use(new LocalStrategy(
         usernameField: 'email',
         passwordField: 'password',
     },
-    ((username, password, done) => User.findOne({ where: { email: { $ilike: `%${username}%` }, raw: true } })
+    ((username, password, done) => User.findOne({ where: { email: username } })
         .then((user) => {
             if (user === null) {
                 return done(null, true);
