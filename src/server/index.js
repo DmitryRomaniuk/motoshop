@@ -7,12 +7,10 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
 import routing from './routing';
 import { STATIC_PATH, isProd } from '../shared/config';
 import './db';
 
-dotenv.config();
 const WEB_PORT = process.env.PORT;
 
 const app = express();
