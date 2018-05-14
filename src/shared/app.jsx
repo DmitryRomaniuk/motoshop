@@ -18,6 +18,13 @@ import { APP_NAME } from './config';
 import * as routes from './routes';
 import { getRoutes } from './action/homePage';
 
+const PrivateRoute = ({ component: Component, authData, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => (authData !== null ? <Component {...props} /> : <Redirect to='/login' />)}
+  />
+)
+
 class App extends Component {
     static defaultProps: Object;
 
@@ -26,22 +33,23 @@ class App extends Component {
     }
 
     render() {
-        return (<div style={{ paddingTop: 54 }}>
-          <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
-          <Nav />
-          <Switch>
-            <Redirect from="/home" to="/" />
-            <Route exact path={routes.HOME_PAGE_ROUTE} component={HomePage} />
-            {
-                  Object.keys(this.props.motolist).map(elem => (<Route key={routes[elem]} path={routes[elem]} render={props => <TypeMotocycles {...props} motoList={this.props.motolist[elem]} />} />))
-              }
-            <Route path={routes.LOGIN_ROUTE} component={LoginPage} />
-            <Route path={routes.PROTECTED_ROUTE} component={ProtectedComponent} />
-            <Route path={routes.ADMIN_ROUTE} component={AdminComponent} />
-            <Route component={NotFoundPage} />
-          </Switch>
-          <Footer />
-        </div>);
+        return (
+          <div style={{ paddingTop: 54 }}>
+            <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
+            <Nav />
+            <Switch>
+              <Redirect from="/home" to="/" />
+              <Route exact path={routes.HOME_PAGE_ROUTE} component={HomePage} />
+              {
+                    Object.keys(this.props.motolist).map(elem => (<Route key={routes[elem]} path={routes[elem]} render={props => <TypeMotocycles {...props} motoList={this.props.motolist[elem]} />} />))
+                }
+              <Route path={routes.LOGIN_ROUTE} component={LoginPage} />
+              <PrivateRoute path={routes.PROTECTED_ROUTE} component={ProtectedComponent} authData={this.props.authData} />
+              <PrivateRoute path={routes.ADMIN_ROUTE} component={AdminComponent} authData={this.props.authData} />
+              <Route component={NotFoundPage} />
+            </Switch>
+            <Footer />
+          </div>);
     }
 }
 
@@ -49,6 +57,7 @@ class App extends Component {
 App.propTypes = {
   // eslint-disable-next-line react/require-default-props
     getListRoutes: PropTypes.func,
+    authData: PropTypes.oneOfType([null, PropTypes.object]),
     motolist: PropTypes.objectOf(PropTypes.shape({
         SUPER_SPORT_ROUTE: PropTypes.objectOf(PropTypes.shape({
             name: PropTypes.string,
@@ -66,6 +75,7 @@ App.defaultProps = {
 
 const mapStateToProps = state => ({
     motolist: state.listHome.get('listRoutes').toJS(),
+    authData: state.user.get('data'),
 });
 
 export default withRouter(connect(mapStateToProps, { getListRoutes: getRoutes })(App));
