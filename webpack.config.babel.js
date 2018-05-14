@@ -15,6 +15,7 @@ export default {
         path: path.resolve(__dirname, 'dist'),
         publicPath: isProd ? '/static/' : `http://localhost:${WDS_PORT}/dist/`,
     },
+    mode: isProd ? 'production' : 'development',
     module: {
         rules: [
       { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ },

@@ -3,6 +3,8 @@
 // const jwt = require('jsonwebtoken');
 const Sequelize = require('sequelize');
 
+const { Op } = Sequelize;
+
 /* eslint-disable no-console */
 const parseURI = process.env.DATABASE_URL.match(/(\w+):([\w\d]+)@([\w\d.-]+):(\d+)\/([\d\w]+)/);
 const sequelize = new Sequelize(parseURI[5], parseURI[1], parseURI[2], {
@@ -17,6 +19,7 @@ const sequelize = new Sequelize(parseURI[5], parseURI[1], parseURI[2], {
         },
     },
     dialect: 'postgres',
+    operatorsAliases: Op,
     pool: {
         max: 5,
         min: 0,

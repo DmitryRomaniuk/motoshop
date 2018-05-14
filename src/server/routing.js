@@ -42,12 +42,13 @@ import {
 
 import renderApp from './render-app';
 
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-},
-    ((username, password, done) => {
-        return User.findOne({ where: { email: username } }).then((user) => {
+passport.use(new LocalStrategy(
+    {
+        usernameField: 'email',
+        passwordField: 'password',
+    },
+    ((username, password, done) => User.findOne({ where: { email: { $ilike: `%${username}%` }, raw: true } })
+        .then((user) => {
             if (user === null) {
                 return done(null, true);
             }
@@ -56,9 +57,9 @@ passport.use(new LocalStrategy({
             }
             return done(null, user);
         })
-        .catch(err => done(err));
-    }),
-    ));
+        .catch(err => done(err))
+    ),
+));
 
 passport.serializeUser((user, done) => {
     done(null, user.id);

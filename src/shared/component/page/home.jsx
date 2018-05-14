@@ -111,13 +111,7 @@ HomePage.propTypes = {
             description: PropTypes.string,
         })),
     })),
-    classes: PropTypes.objectOf(PropTypes.shape({
-        jumbotron: PropTypes.string,
-        'jumbotron-text': PropTypes.string,
-        'jumbotron-text-banner': PropTypes.string,
-        motoTypesOverview: PropTypes.string,
-        motoTypesEach: PropTypes.string,
-    })),
+    classes: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 HomePage.defaultProps = {

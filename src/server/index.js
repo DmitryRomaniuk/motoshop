@@ -27,7 +27,11 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(bodyParser.text({ type: 'text/html' }));
 app.use(STATIC_PATH, express.static('dist'));
 app.use(STATIC_PATH, express.static('public'));
-app.use(session({ secret: 'cats' }));
+app.use(session({
+    secret: 'cats',
+    resave: false,
+    saveUninitialized: true,
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
