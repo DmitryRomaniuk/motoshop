@@ -11,25 +11,23 @@ type Props = {
     onChoiceItem: Function,
 }
 
-const Protected = ({ authData, shoppingCart, onChoiceItem }: Props) => {
-    return (
-      <div className="container" >
-        <div className="row">
-          <h2 className="col-12 text-center">
-            {`Welcome ${authData.get('name')}`}
-          </h2>
-          <br />
-          <div className="col-12 text-center">
-            Make an appointment at the service station:
-          </div>
-          <ShoppingTable
-            shoppingCart={shoppingCart}
-            onChoiceItem={onChoiceItem}
-          />
-        </div>
+const Protected = ({ authData, shoppingCart, onChoiceItem }: Props) => (
+  <div className="container" >
+    <div className="row">
+      <h2 className="col-12 text-center">
+        {`Welcome ${authData.get('name')}`}
+      </h2>
+      <br />
+      <div className="col-12 text-center">
+        Make an appointment at the service station:
       </div>
-    );
-};
+      <ShoppingTable
+        shoppingCart={shoppingCart}
+        onChoiceItem={onChoiceItem}
+      />
+    </div>
+  </div>
+);
 
 const mapStateToProps = state => ({
     authData: state.user.get('data'),

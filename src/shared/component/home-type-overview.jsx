@@ -44,22 +44,22 @@ const HomeTypeOverview = ({ type, moto, classes }: {type: string, moto: Object, 
   (<div className="container mt-4">
     <div className="row">
       <div className={classes.title}>
-        {moto.name}
+        {moto.get('name')}
       </div>
     </div>
     <div className="row">
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" key={moto.name}>
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" key={moto.get('name')}>
         <div className="item">
           <div className={classes.motoAlignOverview}>
             <Link to={type} className="image">
-              <img src={STATIC_PATH + '/img/home/overview/' + moto.image} alt={moto.name} />
+              <img src={STATIC_PATH + '/img/home/overview/' + moto.get('image')} alt={moto.get('name')} />
             </Link>
           </div>
           <div className={classes.description}>
-            <span>{moto.description}</span>
+            <span>{moto.get('description')}</span>
           </div>
           <div className={classes.motoAlignOverview}>
-            <Link to={type} className={classes.motoLink}><span>{moto.name}</span></Link>
+            <Link to={type} className={classes.motoLink}><span>{moto.get('name')}</span></Link>
           </div>
         </div>
       </div>

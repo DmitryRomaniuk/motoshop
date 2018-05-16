@@ -9,8 +9,8 @@ type Props = {
 const Admin = ({ authData }: Props) => (
   <div className="container" >
     <div className="row col-12 text-center">
-      {`Welcome admin user: ${authData.name}. You must be logged in as an admin if you are seeing this page.`}
+      {`Welcome admin user: ${authData.get('name')}. You must be logged in as an admin if you are seeing this page.`}
     </div>
   </div>);
 
-export default connect(state => ({ authData: state.user.get('data').toJS() }))(Admin);
+export default connect(state => ({ authData: state.user.get('data') }))(Admin);

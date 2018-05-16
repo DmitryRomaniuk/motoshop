@@ -90,9 +90,9 @@ class HomePage extends Component {
           </div>
           <div className={this.props.classes.motoTypesOverview}>
             <div className="container">
-              {Object.keys(this.props.listMotoOverview).map(elem => (
-                <div className={this.props.classes.motoTypesEach} key={elem}>
-                  <HomeTypeOverview type={elem.toLowerCase()} moto={this.props.listMotoOverview[elem]} />
+              {this.props.listMotoOverview.entrySeq().toArray().map(([name, value]) => (
+                <div className={this.props.classes.motoTypesEach} key={name}>
+                  <HomeTypeOverview type={name.toLowerCase()} moto={value} />
                 </div>))}
             </div>
           </div>
@@ -125,7 +125,7 @@ HomePage.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-    listMotoOverview: state.listHome.get('listMoto').toJS(),
+    listMotoOverview: state.listHome.get('listMoto'),
 });
 
 export default connect(mapStateToProps, { getList })(injectSheet(styles)(HomePage));
